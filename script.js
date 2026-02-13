@@ -14,3 +14,15 @@ window.addEventListener("DOMContentLoaded", () => {
         hero.style.transform = "translateY(0)";
     }, 200);
 });
+
+const buttons = document.querySelectorAll(".read-more-btn");
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const card = button.closest(".blog-card");
+        card.classList.toggle("active");
+
+        button.textContent = 
+            card.classList.contains("active") ? "Leer menos" : "Leer más";
+    });
+});
