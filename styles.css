@@ -40,7 +40,7 @@ body {
 }
 
 .btn {
-    padding: 10px 24px;
+    padding: 5px 20px;
     border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
@@ -67,6 +67,23 @@ body {
     background-color: #f39c12;
     color: white;
     transform: translateY(-2px);
+}
+
+.down-arrow {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin-top: 10px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
 }
 
 /* ========================
@@ -257,4 +274,99 @@ body {
 
 .read-more-btn:hover {
     text-decoration: underline;
+}
+/* ========================
+   FOOTER
+======================== */
+
+.footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 60px 0 30px 0;
+    font-size: 0.95rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-title {
+    color: #f39c12;
+    margin-bottom: 15px;
+}
+
+.footer-column p {
+    color: #bdc3c7;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #bdc3c7;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #f39c12;
+}
+
+/* Newsletter */
+.newsletter-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.newsletter-form input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px 0 0 6px;
+    outline: none;
+    width: 100%;
+}
+
+.newsletter-form button {
+    background-color: #f39c12;
+    border: none;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter-form button:hover {
+    background-color: #e67e22;
+}
+
+/* Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #95a5a6;
+}
+
+.footer-legal a {
+    text-decoration: none;
+    color: #95a5a6;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.footer-legal a:hover {
+    color: #f39c12;
 }

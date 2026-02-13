@@ -26,3 +26,13 @@ buttons.forEach(button => {
             card.classList.contains("active") ? "Leer menos" : "Leer más";
     });
 });
+
+const newsletterForm = document.querySelector(".newsletter-form");
+
+if (newsletterForm) {
+    newsletterForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Gracias por suscribirte ✨");
+        newsletterForm.reset();
+    });
+}
