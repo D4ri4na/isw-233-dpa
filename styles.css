@@ -1,0 +1,170 @@
+/* ========================
+   RESET
+======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f1e8;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* ========================
+   UTILIDADES
+======================== */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.highlight {
+    color: #f39c12;
+}
+
+.btn {
+    padding: 10px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid #f39c12;
+    color: #f39c12;
+}
+
+.btn-outline:hover {
+    background-color: #f39c12;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ========================
+   HEADER
+======================== */
+.header {
+    background-color: #f39c12;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: #e67e22;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    text-decoration: none;
+    background-color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #f39c12;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #f8e6c5;
+}
+
+/* ========================
+   HERO
+======================== */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hero-content {
+    margin: auto;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    color: #555;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* ========================
+   FOOTER
+======================== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .nav-list {
+        gap: 10px;
+    }
+
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+}
