@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('contactForm');
     if(form) {
@@ -61,3 +60,29 @@ if (contactForm) {
         contactForm.reset();
     });
 }
+
+// ========================
+// DARK MODE TOGGLE
+// ========================
+(function() {
+    // Apply saved preference immediately
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create toggle button
+        var btn = document.createElement('button');
+        btn.className = 'dark-mode-btn';
+        btn.setAttribute('aria-label', 'Cambiar modo oscuro');
+        btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        document.body.appendChild(btn);
+
+        btn.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            var isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            btn.textContent = isDark ? '☀️' : '🌙';
+        });
+    });
+})();

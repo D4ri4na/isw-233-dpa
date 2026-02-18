@@ -979,3 +979,307 @@ body {
 .experience .section-header {
     text-align: left;
 }
+/* ========================
+   DARK MODE TOGGLE BUTTON
+======================== */
+.dark-mode-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-btn:hover {
+    background-color: #e67e22;
+    transform: scale(1.1);
+}
+
+/* ========================
+   DARK MODE STYLES
+======================== */
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+/* Header */
+body.dark-mode .header {
+    background-color: #0d0d1a;
+}
+
+body.dark-mode .header.scrolled {
+    background-color: #0f3460;
+}
+
+body.dark-mode .nav-link {
+    background-color: #e0e0e0;
+    color: #1a1a2e;
+}
+
+body.dark-mode .nav-link:hover {
+    background-color: #f39c12;
+    color: white;
+}
+
+/* Hero */
+body.dark-mode .hero {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .hero-description {
+    color: #b0b0b0;
+}
+
+/* About name */
+body.dark-mode .about-name {
+    color: #e0e0e0;
+}
+
+/* Blog */
+body.dark-mode .blog {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .section-title,
+body.dark-mode .section-header h2 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .section-subtitle {
+    color: #999;
+}
+
+body.dark-mode .blog-card {
+    background-color: #16213e;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    color: #e0e0e0;
+}
+
+body.dark-mode .blog-card h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .blog-preview {
+    color: #aaa;
+}
+
+body.dark-mode .blog-date {
+    color: #888;
+}
+
+body.dark-mode .blog-more {
+    color: #bbb;
+}
+
+/* About page */
+body.dark-mode .about {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .about-card {
+    background-color: #16213e;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .about-content h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .about-content p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .about-section h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .education-card {
+    background-color: #0f3460;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    color: #e0e0e0;
+}
+
+body.dark-mode .education-card h5 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .education-card p {
+    color: #bbb;
+}
+
+body.dark-mode .hobbies-grid span {
+    background-color: #16213e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Contact page */
+body.dark-mode .contact {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .contact-info h3,
+body.dark-mode .contact-info h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .contact-item p {
+    color: #aaa;
+}
+
+body.dark-mode .contact-item strong {
+    color: #e0e0e0;
+}
+
+body.dark-mode .contact-item .icon {
+    background-color: #0f3460;
+    color: #f39c12;
+}
+
+body.dark-mode .social-links a {
+    background-color: #0f3460;
+}
+
+/* Invert GitHub icon in dark mode so it's visible */
+body.dark-mode .social-links a img[src*="github"] {
+    filter: invert(1);
+}
+
+body.dark-mode .contact-form {
+    background-color: #16213e;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .contact-form h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .contact-form label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    background-color: #0f3460;
+    border-color: #2a4080;
+    color: #e0e0e0;
+}
+
+body.dark-mode .contact-form input::placeholder,
+body.dark-mode .contact-form textarea::placeholder {
+    color: #778;
+}
+
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus {
+    border-color: #f39c12;
+}
+
+/* Projects page */
+body.dark-mode .projects {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .project-card {
+    background-color: #16213e;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .project-body h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .project-body p {
+    color: #aaa;
+}
+
+body.dark-mode .project-tags span {
+    color: #f39c12;
+    border-color: #c8973a;
+}
+
+body.dark-mode .project-links a {
+    color: #aaa;
+}
+
+/* Experience page */
+body.dark-mode .experience {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .exp-block-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .exp-card {
+    background-color: #16213e;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .exp-info h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .exp-info p {
+    color: #aaa;
+}
+
+body.dark-mode .exp-period {
+    color: #888;
+}
+
+body.dark-mode .skill-card {
+    background-color: #16213e;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .skill-tags span {
+    color: #ccc;
+    border-color: #444;
+}
+
+body.dark-mode .skill-tags span:hover {
+    border-color: #f39c12;
+    color: #f39c12;
+}
+
+/* Footer */
+body.dark-mode .footer {
+    background-color: #0d0d1a;
+    color: #bbb;
+}
+
+body.dark-mode .footer-column p {
+    color: #999;
+}
+
+body.dark-mode .footer-links a {
+    color: #999;
+}
+
+body.dark-mode .newsletter-form input {
+    background-color: #16213e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .footer-bottom {
+    color: #777;
+    border-top-color: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .footer-legal a {
+    color: #777;
+}

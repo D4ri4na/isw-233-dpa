@@ -1,4 +1,4 @@
-# Portal de Carreras Tecnológicas & Portafolio Personal - UCB
+# Portafolio Personal
 ## 1. Introducción
 Este proyecto consiste en el desarrollo de una plataforma web integral diseñada para presentar un portafolio del estudiante destacando puntos importantes como: proyectos que ha hechi, su perfil y que herramientas domina.
 
@@ -9,6 +9,14 @@ Este proyecto consiste en el desarrollo de una plataforma web integral diseñada
     ├── js/                 # Lógica de componentes y scripts de interacción
     
     ├── index.html          # Página principal del portal
+
+    ├── about.html          # Página "Sobre mi"
+
+    ├── contact.html        # Página para contactarme
+
+    ├── experience.html     # Página donde se muestran mis experiencias y skills
+
+    ├── projects.html       # Página donde se muestran lo trabajos en los que he trabajado
     
     └── README.md           # Documentación del proyecto
 
