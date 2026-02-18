@@ -782,3 +782,200 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* ================================
+   EXPERIENCIA & HABILIDADES
+   Pegar al final de tu styles.css
+================================ */
+
+.experience {
+    padding: 70px 0 80px;
+    background-color: #f5f1e8;
+}
+
+/* Título de bloque (Experiencia / Habilidades) */
+.exp-block {
+    margin-bottom: 44px;
+}
+
+.exp-block-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exp-icon {
+    font-size: 1rem;
+}
+
+.skill-icon {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #c8973a;
+    letter-spacing: -1px;
+}
+
+/* ---- TARJETAS DE EXPERIENCIA ---- */
+
+.exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.exp-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.exp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+
+/* Imagen cuadrada a la izquierda */
+.exp-img {
+    width: 120px;
+    min-height: 120px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.exp-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Contenido de texto */
+.exp-info {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.exp-info h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 2px;
+}
+
+.exp-company {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #c8973a;          /* dorado igual que el acento del sitio */
+}
+
+.exp-period {
+    font-size: 0.78rem;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.exp-info p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+/* ---- GRID DE HABILIDADES ---- */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+/* Tarjeta de categoría */
+.skill-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 18px 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Nombre de categoría (Frontend, Backend…) */
+.skill-category {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #c8973a;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
+/* Tags individuales */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.skill-tags span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1.5px solid #ddd;
+    color: #444;
+    background: transparent;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: default;
+}
+
+.skill-tags span:hover {
+    border-color: #c8973a;
+    color: #c8973a;
+}
+
+/* Bases de Datos queda sola en la segunda fila,
+   alineada a la izquierda (igual que en la imagen) */
+.skills-grid .skill-card:nth-child(4) {
+    grid-column: 1 / 2;
+}
+
+/* ---- RESPONSIVE ---- */
+
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .skills-grid .skill-card:nth-child(4) {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 580px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .exp-card {
+        flex-direction: column;
+    }
+    .exp-img {
+        width: 100%;
+        height: 160px;
+    }
+}
+/* ================================
+   EXPERIENCIA: línea izquierda
+================================ */
+.experience .section-line {
+    margin: 10px 0 0 0;  /* alineada a la izquierda, igual que en la imagen */
+}
+
+.experience .section-header {
+    text-align: left;
+}
