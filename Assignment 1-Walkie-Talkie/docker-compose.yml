@@ -1,0 +1,15 @@
+services:
+  server:
+    build: .
+    command: ["server", "5005"]
+    ports:
+      - "5005:5005/udp"
+    devices:
+      - "/dev/snd:/dev/snd"
+
+  client:
+    build: .
+    stdin_open: true
+    tty: true
+    devices:
+      - "/dev/snd:/dev/snd"
