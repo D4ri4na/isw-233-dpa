@@ -1,0 +1,21 @@
+services:
+  server_player:
+    build: .
+    stdin_open: true
+    tty: true
+    command: ["1234", "5000"]
+    networks:
+      - battleship_net
+
+  client_player:
+    build: .
+    stdin_open: true
+    tty: true
+    # Quitamos depends_on para que no inicie un servidor extra
+    command: ["5678", "server_player", "5000"]
+    networks:
+      - battleship_net
+
+networks:
+  battleship_net:
+    driver: bridge
