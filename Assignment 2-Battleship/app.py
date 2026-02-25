@@ -152,7 +152,6 @@ class SeabattleAgent:
     
     @staticmethod
     def move_to_string(x, y):
-        """Convierte coordenadas (1, 5) a 'B6' """
         return f"{chr(ord('A') + x)}{y + 1}"
 
 def start_server(seed, port):
@@ -178,14 +177,11 @@ def start_client(seed, ip, port):
     agent.start_game(is_my_turn=True)
 
 if __name__ == "__main__":
-    # sys.argv[0] es el nombre del script, los argumentos empiezan en el índice 1
     args = sys.argv[1:]
     
     if len(args) == 2:
-        # Modo Servidor: seed port
         start_server(int(args[0]), int(args[1]))
     elif len(args) == 3:
-        # Modo Cliente: seed server_ip port
         start_client(int(args[0]), args[1], int(args[2]))
     else:
         print("Error en argumentos.")
