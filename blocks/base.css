@@ -26,12 +26,14 @@ body {
 }
 
 .btn {
-    padding: 10px 28px;   /* antes era 5px 20px, muy pequeño */
+    padding: 10px 28px;
     border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
     display: inline-block;
+    min-width: 140px;        /* agrega esto */
+    text-align: center;      /* y esto */
 }
 
 .btn--primary {
@@ -47,6 +49,7 @@ body {
 .btn--outline {
     border: 2px solid #f39c12;
     color: #f39c12;
+    padding: 8px 26px;  /* compensa el espacio que ocupa el borde */
 }
 
 .btn--outline:hover {

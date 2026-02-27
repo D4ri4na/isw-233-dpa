@@ -1,3 +1,10 @@
+fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+        const placeholder = document.getElementById('footer-placeholder');
+        if (placeholder) placeholder.outerHTML = html;
+    });
+
 (function() {
     if (localStorage.getItem('darkMode') === 'on') {
         document.body.classList.add('dark-mode');
@@ -44,14 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const newsletterForms = document.querySelectorAll(".footer__newsletter");
-    newsletterForms.forEach(newsletterForm => {
-        newsletterForm.addEventListener("submit", (e) => {
+    document.body.addEventListener("submit", (e) => {
+        if (e.target.matches(".footer__newsletter")) {
             e.preventDefault();
             alert("¡Gracias por suscribirte!");
-            newsletterForm.reset();
-        });
+            e.target.reset();
+        }
     });
+
 
     function setDarkMode(enabled) {
         document.body.classList.toggle('dark-mode', enabled);
