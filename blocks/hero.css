@@ -15,6 +15,11 @@
     margin-bottom: 20px;
 }
 
+.hero__title .highlight {
+    color: #f39c12;
+    font-weight: 700;
+}
+
 .hero__description {
     max-width: 600px;
     margin: 0 auto 30px auto;
@@ -26,12 +31,27 @@
     justify-content: center;
     gap: 15px;
 }
+.btn {
+    padding: 10px 28px;   
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.down__arrow {
+    font-size: 2rem;
+    color: #f39c12;
+    margin-left: 12px;
+    align-self: center;
+}
 
 .hero__arrow {
-    text-align: center;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: #f39c12;
-    margin-top: 10px;
+    display: inline-flex;
+    align-self: center;
     animation: bounce 1.5s infinite;
 }
 

@@ -1,6 +1,3 @@
-// ========================
-// DARK MODE - aplica inmediatamente para evitar parpadeo
-// ========================
 (function() {
     if (localStorage.getItem('darkMode') === 'on') {
         document.body.classList.add('dark-mode');
@@ -8,10 +5,6 @@
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-
-    // ========================
-    // FORMULARIO DE CONTACTO
-    // ========================
     var form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -25,18 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ========================
-    // SCROLL HEADER
-    // ========================
     window.addEventListener("scroll", function () {
         const header = document.querySelector(".header");
-        if (header) header.classList.toggle("scrolled", window.scrollY > 50);
+        if (header) header.classList.toggle("header--scrolled", window.scrollY > 50);
     });
 
-    // ========================
-    // ANIMACION HERO
-    // ========================
-    const hero = document.querySelector(".hero-content");
+    const hero = document.querySelector(".hero__content");
     if (hero) {
         hero.style.opacity = 0;
         hero.style.transform = "translateY(20px)";
@@ -47,33 +34,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 200);
     }
 
-    // ========================
-    // BLOG: LEER MAS
-    // ========================
-    const buttons = document.querySelectorAll(".read-more-btn");
+    const buttons = document.querySelectorAll(".blog__read-more");
     buttons.forEach(button => {
         button.addEventListener("click", () => {
-            const card = button.closest(".blog-card");
-            card.classList.toggle("active");
-            button.textContent = card.classList.contains("active") ? "Leer menos" : "Leer mas";
+            const card = button.closest(".blog__card");
+            card.classList.toggle("blog__card--active");
+            const isActive = card.classList.contains("blog__card--active");
+            button.innerHTML = isActive ? "Leer menos →" : "Leer más →";
         });
     });
 
-    // ========================
-    // NEWSLETTER
-    // ========================
-    const newsletterForm = document.querySelector(".newsletter-form");
-    if (newsletterForm) {
+    const newsletterForms = document.querySelectorAll(".footer__newsletter");
+    newsletterForms.forEach(newsletterForm => {
         newsletterForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            alert("Gracias por suscribirte!");
+            alert("¡Gracias por suscribirte!");
             newsletterForm.reset();
         });
-    }
+    });
 
-    // ========================
-    // DARK MODE TOGGLE
-    // ========================
     function setDarkMode(enabled) {
         document.body.classList.toggle('dark-mode', enabled);
         localStorage.setItem('darkMode', enabled ? 'on' : 'off');
@@ -81,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (btn) btn.textContent = enabled ? '☀️' : '🌙';
     }
 
-    // Aplicar preferencia guardada o del sistema
     var savedMode = localStorage.getItem('darkMode');
     if (savedMode === 'on') {
         setDarkMode(true);
@@ -91,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setDarkMode(true);
     }
 
-    // Crear boton si no existe en el HTML
     if (!document.querySelector('.dark-mode-btn')) {
         var btn = document.createElement('button');
         btn.className = 'dark-mode-btn';
@@ -100,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(btn);
     }
 
-    // Evento de click
     document.querySelector('.dark-mode-btn').addEventListener('click', function() {
         setDarkMode(!document.body.classList.contains('dark-mode'));
     });

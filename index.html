@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Dariana Pol</title>
 
-    <!-- CSS externo -->
-    <link rel="stylesheet" href="styles.css">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS: bloques individuales -->
+    <link rel="stylesheet" href="blocks/base.css">
+    <link rel="stylesheet" href="blocks/header.css">
+    <link rel="stylesheet" href="blocks/hero.css">
+    <link rel="stylesheet" href="blocks/about.css">
+    <link rel="stylesheet" href="blocks/blog.css">
+    <link rel="stylesheet" href="blocks/projects.css">
+    <link rel="stylesheet" href="blocks/experience.css">
+    <link rel="stylesheet" href="blocks/contact.css">
+    <link rel="stylesheet" href="blocks/footer.css">
+    <link rel="stylesheet" href="blocks/dark-mode.css">
+
 </head>
 
 <body>
@@ -18,10 +28,10 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="about.html" class="nav-link">Sobre Mí</a></li>
-                    <li><a href="projects.html" class="nav-link">Mis Proyectos</a></li>
-                    <li><a href="experience.html" class="nav-link">Experiencias</a></li>
+                <ul class="nav__list">
+                    <li><a href="about.html" class="nav__link">Sobre Mí</a></li>
+                    <li><a href="projects.html" class="nav__link">Mis Proyectos</a></li>
+                    <li><a href="experience.html" class="nav__link">Experiencias</a></li>
                 </ul>
             </nav>
         </div>
@@ -30,166 +40,149 @@
     <!-- HERO SECTION -->
     <main>
         <section class="hero" id="home">
-            <div class="container hero-content">
-                <h1 class="hero-title">
+            <div class="container hero__content">
+                <h1 class="hero__title">
                     Hola, Soy <span class="highlight">Dariana</span>
                 </h1>
-
-                <p class="hero-description">
-                    Estudiante de Ingeniería de Software y AWS Cloud Club Captain.   
-                    Me especializo en construir soluciones escalables y eficientes, combinando el desarrollo Full Stack con la potencia de la nube para transformar ideas en realidades digitales.
+                <p class="hero__description">
+                    Estudiante de Ingeniería de Software y AWS Cloud Club Captain.
+                    Me especializo en construir soluciones escalables y eficientes, combinando
+                    el desarrollo Full Stack con la potencia de la nube para transformar ideas
+                    en realidades digitales.
                 </p>
-
-                <div class="hero-buttons">
-                    <a href="contact.html" class="btn btn-primary">Contáctame</a>
-                    <a href="projects.html" class="btn btn-outline">Ver Proyectos</a>
+                <div class="hero__buttons">
+                    <a href="contact.html" class="btn btn--primary">Contáctame</a>
+                    <a href="projects.html" class="btn btn--outline">Ver Proyectos</a>
+                    <div class="hero__arrow">&#x25BC;</div>
                     
-                    <div class="down-arrow">&#x25BC;</div>
                 </div>
             </div>
         </section>
     </main>
 
-        <!-- BLOG SECTION -->
+    <!-- BLOG SECTION -->
     <section class="blog" id="blog">
         <div class="container">
-            <h2 class="section-title">Blog</h2>
-            <p class="section-subtitle">
+
+            <h2 class="blog__title">Blog</h2>
+            <span class="blog__title-line"></span>
+            <p class="blog__subtitle">
                 Comparto mis conocimientos y experiencias en desarrollo de software
             </p>
 
-            <div class="blog-grid">
+            <div class="blog__grid">
 
                 <!-- ARTÍCULO 1 -->
-                <article class="blog-card">
-                    <span class="blog-date">22 de febrero de 2026</span>
-                    <span class="tag">Cloud / AWS</span>
+                <article class="blog__card">
+                    <span class="blog__date">22 de febrero de 2026</span>
+                    <span class="blog__tag">Cloud / AWS</span>
                     <h3>Mi camino como AWS Cloud Club Captain</h3>
-                    <p class="blog-preview">
+                    <p class="blog__preview">
                         Una mirada interna a cómo estamos impulsando la cultura de la nube en la UCB.
                     </p>
-
-                    <div class="blog-more">
+                    <div class="blog__more">
                         <p>
                             Ser parte del liderazgo del AWS Cloud Club me ha permitido organizar eventos,
                             conectar estudiantes con oportunidades tecnológicas y fomentar el aprendizaje
                             colaborativo en tecnologías cloud.
                         </p>
                     </div>
-
-                    <button class="read-more-btn">Leer más</button>
+                    <button class="blog__read-more">Leer más →</button>
                 </article>
 
                 <!-- ARTÍCULO 2 -->
-                <article class="blog-card">
-                    <span class="blog-date">5 de febrero de 2026</span>
-                    <span class="tag">Arquitectura</span>
+                <article class="blog__card">
+                    <span class="blog__date">5 de febrero de 2026</span>
+                    <span class="blog__tag">Arquitectura</span>
                     <h3>Aplicando SOLID en sistemas reales</h3>
-                    <p class="blog-preview">
+                    <p class="blog__preview">
                         Cómo implementamos patrones como State y Strategy en un sistema de citas médicas desarrollado en Java.
                     </p>
-
-                    <div class="blog-more">
+                    <div class="blog__more">
                         <p>
-                            No se trata solo de escribir código que funcione, sino de estructurarlo con patrones SOLID 
-                            para que sistemas complejos, como el de una clínica médica, puedan evolucionar de forma escalable y mantenible
+                            No se trata solo de escribir código que funcione, sino de estructurarlo con patrones SOLID
+                            para que sistemas complejos, como el de una clínica médica, puedan evolucionar de forma
+                            escalable y mantenible.
                         </p>
                     </div>
-
-                    <button class="read-more-btn">Leer más</button>
+                    <button class="blog__read-more">Leer más →</button>
                 </article>
 
                 <!-- ARTÍCULO 3 -->
-                <article class="blog-card">
-                    <span class="blog-date">28 de enero de 2026</span>
-                    <span class="tag">IA</span>
+                <article class="blog__card">
+                    <span class="blog__date">28 de enero de 2026</span>
+                    <span class="blog__tag">IA</span>
                     <h3>Reconocimiento de gestos con TensorFlow</h3>
-                    <p class="blog-preview">
+                    <p class="blog__preview">
                         Explorando el potencial de Keras y Computer Vision para detectar movimientos de manos en tiempo real.
                     </p>
-
-                    <div class="blog-more">
+                    <div class="blog__more">
                         <p>
-                            La visión por computadora permite que las máquinas 'entiendan' nuestro mundo físico; 
-                            aquí exploro cómo entrenar modelos con Keras y TensorFlow para transformar gestos de manos en comandos digitales precisos.
+                            La visión por computadora permite que las máquinas 'entiendan' nuestro mundo físico;
+                            aquí exploro cómo entrenar modelos con Keras y TensorFlow para transformar gestos
+                            de manos en comandos digitales precisos.
                         </p>
                     </div>
-
-                    <button class="read-more-btn">Leer más</button>
+                    <button class="blog__read-more">Leer más →</button>
                 </article>
 
                 <!-- ARTÍCULO 4 -->
-                <article class="blog-card">
-                    <span class="blog-date">15 de enero de 2026</span>
-                    <span class="tag">Hardware</span>
+                <article class="blog__card">
+                    <span class="blog__date">15 de enero de 2026</span>
+                    <span class="blog__tag">Hardware</span>
                     <h3>Simulando la arquitectura de una CPU</h3>
-                    <p class="blog-preview">
+                    <p class="blog__preview">
                         El reto de construir desde cero un simulador que incluya ALU, Pipeline y gestión de memoria.
                     </p>
-
-                    <div class="blog-more">
+                    <div class="blog__more">
                         <p>
-                            Para dominar el software, hay que entender el corazón de la máquina; este proyecto 
-                            detalla cómo simulamos la lógica de una ALU, la gestión de memoria y el flujo de un pipeline en una arquitectura de hardware funcional.
+                            Para dominar el software, hay que entender el corazón de la máquina; este proyecto
+                            detalla cómo simulamos la lógica de una ALU, la gestión de memoria y el flujo de un
+                            pipeline en una arquitectura de hardware funcional.
                         </p>
                     </div>
-
-                    <button class="read-more-btn">Leer más</button>
+                    <button class="blog__read-more">Leer más →</button>
                 </article>
 
             </div>
         </div>
     </section>
 
-
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container footer-grid">
-
-            <!-- Columna 1 -->
-            <div class="footer-column">
-                <h3 class="footer-title">Dariana Pol Aramayo</h3>
-                <p>
-                    Desarrollador Full Stack apasionado por crear soluciones tecnológicas
-                    que marquen la diferencia.
-                </p>
+        <div class="container footer__grid">
+            <div class="footer__column">
+                <h3 class="footer__title">Dariana Pol Aramayo</h3>
+                <p>Desarrolladora Full Stack apasionada por crear soluciones tecnológicas que marquen la diferencia.</p>
             </div>
-
-            <!-- Columna 2 -->
-            <div class="footer-column">
-                <h3 class="footer-title">Enlaces Rápidos</h3>
-                <ul class="footer-links">
-                    <li><a href="#projects">Proyectos</a></li>
+            <div class="footer__column">
+                <h3 class="footer__title">Enlaces Rápidos</h3>
+                <ul class="footer__links">
+                    <li><a href="projects.html">Proyectos</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="about.html">Sobre Mí</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
                 </ul>
             </div>
-
-            <!-- Columna 3 -->
-            <div class="footer-column">
-                <h3 class="footer-title">Newsletter</h3>
+            <div class="footer__column">
+                <h3 class="footer__title">Newsletter</h3>
                 <p>Suscríbete para recibir actualizaciones sobre nuevos proyectos y artículos.</p>
-                <form class="newsletter-form">
+                <form class="footer__newsletter">
                     <input type="email" placeholder="Tu email" required>
                     <button type="submit">Enviar</button>
                 </form>
             </div>
-
         </div>
-
-        <div class="footer-bottom">
+        <div class="footer__bottom">
             <p>© 2026 Dariana Pol Aramayo. Hecho con ❤️ y mucho café</p>
-
-            <div class="footer-legal">
+            <div class="footer__legal">
                 <a href="#">Política de Privacidad</a>
                 <a href="#">Términos de Uso</a>
             </div>
         </div>
     </footer>
 
-
-    <!-- JS externo -->
+    <button class="dark-mode-btn" id="darkModeBtn" aria-label="Cambiar modo oscuro">🌙</button>
     <script src="script.js"></script>
 </body>
 </html>

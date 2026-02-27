@@ -4,12 +4,16 @@
 
 .blog__title {
     text-align: center;
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
-
+.blog__date {
+    display: block;
+    font-size: 0.95em;
+    color: #888;
+    margin-bottom: 6px;
+    font-style: italic;
+}
 .blog__title-line {
     display: block;
     width: 50px;
@@ -23,36 +27,32 @@
     text-align: center;
     color: #777;
     margin-bottom: 50px;
-    font-size: 1rem;
 }
 
 
 .blog__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 
 .blog__card {
     background-color: #ffffff;
-    padding: 28px 30px 24px;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    position: relative;
 }
 
 .blog__card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
 }
 
 .blog__card--active .blog__more {
-    max-height: 300px;
-    margin-top: 8px;
+    max-height: 200px;
+    margin-top: 10px;
 }
 
 
@@ -61,10 +61,9 @@
     background-color: #f39c12;
     color: white;
     font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 14px;
+    padding: 5px 10px;
     border-radius: 20px;
-    width: fit-content;
+    margin-bottom: 10px;
 }
 
 .blog__card h3 {
@@ -111,14 +110,8 @@
     border: none;
     color: #f39c12;
     font-weight: 600;
-    font-size: 0.9rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 0;
-    margin-top: 4px;
-    transition: gap 0.2s;
+    margin-top: 10px;
 }
 
 .blog__read-more:hover {
@@ -128,6 +121,8 @@
 
 @media (max-width: 700px) {
     .blog__grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
     }
 }
