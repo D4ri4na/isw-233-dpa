@@ -4,17 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos - Dariana Pol</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS: bloques individuales -->
+    <link rel="stylesheet" href="blocks/base.css">
+    <link rel="stylesheet" href="blocks/header.css">
+    <link rel="stylesheet" href="blocks/hero.css">
+    <link rel="stylesheet" href="blocks/about.css">
+    <link rel="stylesheet" href="blocks/blog.css">
+    <link rel="stylesheet" href="blocks/projects.css">
+    <link rel="stylesheet" href="blocks/experience.css">
+    <link rel="stylesheet" href="blocks/contact.css">
+    <link rel="stylesheet" href="blocks/footer.css">
+    <link rel="stylesheet" href="blocks/dark-mode.css">
+
+    <style>
+        :root {
+            --color-primary: #f39c12;
+            --color-hover: #e67e22;
+            --color-accent: #c8973a;
+            --font-base: 'Poppins', sans-serif;
+            --bg-light: #f5f1e8;
+            --text-dark: #2c3e50;
+        }
+    </style>
 </head>
 <body>
 
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="about.html" class="nav-link">Sobre M&#237;</a></li>
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <ul class="nav__list">
+                    <li><a href="about.html" class="nav__link">Sobre Mí</a></li>
+                    <li><a href="index.html" class="nav__link">Inicio</a></li>
                 </ul>
             </nav>
         </div>
@@ -26,60 +50,60 @@
 
                 <div class="section-header">
                     <h2>Proyectos Destacados</h2>
-                    <span class="section-line"></span>
+                    <span class="section-header__line"></span>
                 </div>
 
-                <div class="projects-grid">
+                <div class="projects__grid">
 
                     <article class="project-card">
-                        <div class="project-img">
+                        <div class="project-card__img">
                             <img src="img/MARKEA.ico" alt="E-Commerce Platform">
                         </div>
-                        <div class="project-body">
+                        <div class="project-card__body">
                             <h3>E-Commerce Platform - MARKEA</h3>
-                            <p>Plataforma completa de comercio electr&#243;nico con panel de administraci&#243;n, carrito de compras y sistema de pagos integrado.</p>
-                            <div class="project-tags">
+                            <p>Plataforma completa de comercio electrónico con panel de administración, carrito de compras y sistema de pagos integrado.</p>
+                            <div class="project-card__tags">
                                 <span>React</span>
                                 <span>SQL Server</span>
                                 <span>MongoDB</span>
                             </div>
-                            <div class="project-links">
-                                <a href="https://github.com/D4ri4na/MARKEA.git">&#8599; Ver Codigo</a>
+                            <div class="project-card__links">
+                                <a href="https://github.com/D4ri4na/MARKEA.git">↗ Ver Codigo</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card">
-                        <div class="project-img">
-                            <img src="img/clinica.png" alt="App M&#243;vil de Productividad">
+                        <div class="project-card__img">
+                            <img src="img/clinica.png" alt="Clínica">
                         </div>
-                        <div class="project-body">
+                        <div class="project-card__body">
                             <h3>Clínica: agenda de citas y atención</h3>
                             <p>Pagina web para gestionar agendas médicas por especialidad y atender citas.</p>
-                            <div class="project-tags">
+                            <div class="project-card__tags">
                                 <span>React</span>
                                 <span>Java</span>
                             </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Andress-Mallea/Remontada-Epica-De-Diseno.git">&#8599; Ver Codigo</a>
+                            <div class="project-card__links">
+                                <a href="https://github.com/Andress-Mallea/Remontada-Epica-De-Diseno.git">↗ Ver Codigo</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card">
-                        <div class="project-img">
-                            <img src="img/arq.png" alt="Sistema de Gesti&#243;n Empresarial">
+                        <div class="project-card__img">
+                            <img src="img/arq.png" alt="Simulador x86">
                         </div>
-                        <div class="project-body">
+                        <div class="project-card__body">
                             <h3>Simulador interactivo de arquitectura x86</h3>
                             <p>El simulador permite cargar y ejecutar código en lenguaje ensamblador x86.</p>
-                            <div class="project-tags">
+                            <div class="project-card__tags">
                                 <span>C++</span>
                                 <span>Ensamblador</span>
                                 <span>VBA</span>
                             </div>
-                            <div class="project-links">
-                                <a href="https://github.com/NicoleLozadaLeon/Simulador-de-Arquitectura-x86.git">&#8599; Ver Codigo</a>
+                            <div class="project-card__links">
+                                <a href="https://github.com/NicoleLozadaLeon/Simulador-de-Arquitectura-x86.git">↗ Ver Codigo</a>
                             </div>
                         </div>
                     </article>
@@ -87,7 +111,7 @@
                 </div>
 
                 <div class="back-home">
-                    <a href="index.html">&#8592; Volver a inicio</a>
+                    <a href="index.html">← Volver a inicio</a>
                 </div>
 
             </div>
@@ -95,37 +119,38 @@
     </main>
 
     <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-column">
-                <h3 class="footer-title">Dariana Pol Aramayo</h3>
-                <p>Desarrolladora Full Stack apasionada por crear soluciones tecnol&#243;gicas que marquen la diferencia.</p>
+        <div class="container footer__grid">
+            <div class="footer__column">
+                <h3 class="footer__title">Dariana Pol Aramayo</h3>
+                <p>Desarrolladora Full Stack apasionada por crear soluciones tecnológicas que marquen la diferencia.</p>
             </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Enlaces R&#225;pidos</h3>
-                <ul class="footer-links">
+            <div class="footer__column">
+                <h3 class="footer__title">Enlaces Rápidos</h3>
+                <ul class="footer__links">
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre M&#237;</a></li>
+                    <li><a href="about.html">Sobre Mí</a></li>
                     <li><a href="contact.html">Contacto</a></li>
                 </ul>
             </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Newsletter</h3>
-                <p>Suscr&#237;bete para recibir actualizaciones sobre nuevos proyectos.</p>
-                <form class="newsletter-form">
+            <div class="footer__column">
+                <h3 class="footer__title">Newsletter</h3>
+                <p>Suscríbete para recibir actualizaciones sobre nuevos proyectos.</p>
+                <form class="footer__newsletter">
                     <input type="email" placeholder="Tu email" required>
                     <button type="submit">Enviar</button>
                 </form>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&#169; 2026 Dariana Pol Aramayo. Hecho con &#10084;&#65039; y mucho caf&#233;</p>
-            <div class="footer-legal">
-                <a href="#">Pol&#237;tica de Privacidad</a>
-                <a href="#">T&#233;rminos de Uso</a>
+        <div class="footer__bottom">
+            <p>© 2026 Dariana Pol Aramayo. Hecho con ❤️ y mucho café</p>
+            <div class="footer__legal">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Uso</a>
             </div>
         </div>
     </footer>
 
+    <button class="dark-mode-btn" id="darkModeBtn" aria-label="Cambiar modo oscuro">🌙</button>
     <script src="script.js"></script>
 </body>
 </html>
