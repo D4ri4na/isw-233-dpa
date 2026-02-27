@@ -1,0 +1,55 @@
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hero__content {
+    margin: auto;
+}
+
+.hero__title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero__description {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    color: #555;
+}
+
+.hero__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.hero__arrow {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin-top: 10px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 2.2rem;
+    }
+
+    .hero__buttons {
+        flex-direction: column;
+    }
+}

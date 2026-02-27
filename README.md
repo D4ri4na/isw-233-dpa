@@ -36,3 +36,5 @@ Se puede visualizar el prototipo interactivo y la guía de estilos en el siguien
 Se puede visualizar todas las peticiones que se le han hecho a la IA
 
 👉 https://chatgpt.com/share/698eaa44-cc28-8010-8e5d-4e80911bae12
+
+https://claude.ai/share/c64028c2-075a-4b0e-a634-3e902a11e68d
