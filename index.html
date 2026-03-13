@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Dariana Pol</title>
+    <title>Dariana Pol — Portfolio</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS: bloques individuales -->
+    <style>
+        :root {
+            --color-primary: #f39c12;
+            --color-hover:   #e67e22;
+            --color-accent:  #c8973a;
+            --font-base:     'Poppins', sans-serif;
+            --bg-light:      #f5f1e8;
+            --text-dark:     #2c3e50;
+            --text-muted:    #777;
+            --white:         #ffffff;
+            --shadow-sm:     0 4px 15px rgba(0,0,0,0.05);
+            --shadow-md:     0 4px 16px rgba(0,0,0,0.08);
+            --radius-sm:     10px;
+            --radius-md:     12px;
+            --radius-lg:     16px;
+        }
+    </style>
+
     <link rel="stylesheet" href="blocks/base.css">
     <link rel="stylesheet" href="blocks/header.css">
     <link rel="stylesheet" href="blocks/hero.css">
@@ -20,137 +36,46 @@
     <link rel="stylesheet" href="blocks/footer.css">
     <link rel="stylesheet" href="blocks/dark-mode.css">
 
+    <style>
+        .nav__link--active {
+            background-color: #2c3e50 !important;
+            color: white !important;
+        }
+    </style>
 </head>
-
 <body>
 
-    <!-- HEADER / NAVBAR -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li><a href="about.html" class="nav__link">Sobre Mí</a></li>
-                    <li><a href="projects.html" class="nav__link">Mis Proyectos</a></li>
-                    <li><a href="experience.html" class="nav__link">Experiencias</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <app-header></app-header>
+    <main id="app-root" style="padding-top: 70px; min-height: calc(100vh - 70px)"></main>
 
-    <!-- HERO SECTION -->
-    <main>
-        <section class="hero" id="home">
-            <div class="container hero__content">
-                <h1 class="hero__title">
-                    Hola, Soy <span class="highlight">Dariana</span>
-                </h1>
-                <p class="hero__description">
-                    Estudiante de Ingeniería de Software y AWS Cloud Club Captain.
-                    Me especializo en construir soluciones escalables y eficientes, combinando
-                    el desarrollo Full Stack con la potencia de la nube para transformar ideas
-                    en realidades digitales.
-                </p>
-                <div class="hero__buttons">
-                    <a href="contact.html" class="btn btn--primary">Contáctame</a>
-                    <a href="projects.html" class="btn btn--outline">Ver Proyectos</a>
-                    <div class="hero__arrow">&#x25BC;</div>
-                    
-                </div>
+    <app-footer></app-footer>
+    <template id="tpl-blog-card">
+        <article class="blog__card">
+            <span class="blog__date"></span>
+            <span class="blog__tag"></span>
+            <h3 class="blog__title"></h3>
+            <p class="blog__preview"></p>
+            <div class="blog__more"><p></p></div>
+            <div class="blog__actions">
+                <button class="blog__read-more">Leer más →</button>
+                <button class="blog__fav-btn" title="Marcar como favorito">🤍</button>
             </div>
-        </section>
-    </main>
+        </article>
+    </template>
 
-    <!-- BLOG SECTION -->
-    <section class="blog" id="blog">
-        <div class="container">
+    <script src="components/app-header.js"></script>
+    <script src="components/app-footer.js"></script>
+    <script src="components/blog-card.js"></script>
 
-            <h2 class="blog__title">Blog</h2>
-            <span class="blog__title-line"></span>
-            <p class="blog__subtitle">
-                Comparto mis conocimientos y experiencias en desarrollo de software
-            </p>
+    <script src="pages/blog.js"></script>
 
-            <div class="blog__grid">
+    <script src="pages/home.js"></script>
+    <script src="pages/about.js"></script>
+    <script src="pages/projects.js"></script>
+    <script src="pages/experience.js"></script>
+    <script src="pages/contact.js"></script> 
 
-                <!-- ARTÍCULO 1 -->
-                <article class="blog__card">
-                    <span class="blog__date">22 de febrero de 2026</span>
-                    <span class="blog__tag">Cloud / AWS</span>
-                    <h3>Mi camino como AWS Cloud Club Captain</h3>
-                    <p class="blog__preview">
-                        Una mirada interna a cómo estamos impulsando la cultura de la nube en la UCB.
-                    </p>
-                    <div class="blog__more">
-                        <p>
-                            Ser parte del liderazgo del AWS Cloud Club me ha permitido organizar eventos,
-                            conectar estudiantes con oportunidades tecnológicas y fomentar el aprendizaje
-                            colaborativo en tecnologías cloud.
-                        </p>
-                    </div>
-                    <button class="blog__read-more">Leer más →</button>
-                </article>
+    <script src="app.js"></script>
 
-                <!-- ARTÍCULO 2 -->
-                <article class="blog__card">
-                    <span class="blog__date">5 de febrero de 2026</span>
-                    <span class="blog__tag">Arquitectura</span>
-                    <h3>Aplicando SOLID en sistemas reales</h3>
-                    <p class="blog__preview">
-                        Cómo implementamos patrones como State y Strategy en un sistema de citas médicas desarrollado en Java.
-                    </p>
-                    <div class="blog__more">
-                        <p>
-                            No se trata solo de escribir código que funcione, sino de estructurarlo con patrones SOLID
-                            para que sistemas complejos, como el de una clínica médica, puedan evolucionar de forma
-                            escalable y mantenible.
-                        </p>
-                    </div>
-                    <button class="blog__read-more">Leer más →</button>
-                </article>
-
-                <!-- ARTÍCULO 3 -->
-                <article class="blog__card">
-                    <span class="blog__date">28 de enero de 2026</span>
-                    <span class="blog__tag">IA</span>
-                    <h3>Reconocimiento de gestos con TensorFlow</h3>
-                    <p class="blog__preview">
-                        Explorando el potencial de Keras y Computer Vision para detectar movimientos de manos en tiempo real.
-                    </p>
-                    <div class="blog__more">
-                        <p>
-                            La visión por computadora permite que las máquinas 'entiendan' nuestro mundo físico;
-                            aquí exploro cómo entrenar modelos con Keras y TensorFlow para transformar gestos
-                            de manos en comandos digitales precisos.
-                        </p>
-                    </div>
-                    <button class="blog__read-more">Leer más →</button>
-                </article>
-
-                <!-- ARTÍCULO 4 -->
-                <article class="blog__card">
-                    <span class="blog__date">15 de enero de 2026</span>
-                    <span class="blog__tag">Hardware</span>
-                    <h3>Simulando la arquitectura de una CPU</h3>
-                    <p class="blog__preview">
-                        El reto de construir desde cero un simulador que incluya ALU, Pipeline y gestión de memoria.
-                    </p>
-                    <div class="blog__more">
-                        <p>
-                            Para dominar el software, hay que entender el corazón de la máquina; este proyecto
-                            detalla cómo simulamos la lógica de una ALU, la gestión de memoria y el flujo de un
-                            pipeline en una arquitectura de hardware funcional.
-                        </p>
-                    </div>
-                    <button class="blog__read-more">Leer más →</button>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <div id="footer-placeholder"></div>
-
-    <button class="dark-mode-btn" id="darkModeBtn" aria-label="Cambiar modo oscuro">🌙</button>
-    <script src="script.js"></script>
 </body>
 </html>
