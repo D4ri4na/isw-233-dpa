@@ -55,6 +55,9 @@ export function experiencePage() {
                     </div>
                 </div>
             </div>
+            <div class="exp-block">
+                <h3 class="exp-block__title"><span class="exp-block__icon--code">🗂️</span> Certificaciones</h3>
+            </div>
             <div class="back-home"><a href="/" data-link>← Volver a inicio</a></div>
         </div>
     `;

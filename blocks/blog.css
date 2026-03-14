@@ -8,7 +8,6 @@
 }
 
 .blog__filter-btn {
-    position: relative;
     background: #ffffff;
     border: 2px solid #e8dfd0;
     color: #6b6b6b;
@@ -19,37 +18,17 @@
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.02em;
-    transition: all 0.25s ease;
+    transition: background 0.25s ease, border-color 0.25s ease,
+                color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    overflow: hidden;
-}
-
-/* Shimmer on hover */
-.blog__filter-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #fff8ee 0%, #ffecd0 100%);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    border-radius: inherit;
 }
 
 .blog__filter-btn:hover {
+    background: #fff3e0;
     border-color: #f39c12;
     color: #e67e22;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(243,156,18,0.15);
-}
-
-.blog__filter-btn:hover::before {
-    opacity: 1;
-}
-
-.blog__filter-btn span,
-.blog__filter-btn {
-    position: relative;
-    z-index: 1;
 }
 
 /* Active state — filled orange pill */
@@ -61,13 +40,12 @@
     transform: translateY(-1px);
 }
 
-.blog__filter-btn--active::before {
-    opacity: 0;
-}
-
+/* Active + hover — stays orange, text stays WHITE */
 .blog__filter-btn--active:hover {
     background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    border-color: transparent;
     color: #ffffff;
+    transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(243,156,18,0.45);
 }
 

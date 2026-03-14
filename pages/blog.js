@@ -17,6 +17,9 @@ export function blogPage() {
                 <button class="blog__filter-btn" data-filter="favs">⭐ Favoritos</button>
             </div>
             <div class="blog__grid" id="blog-grid"></div>
+            <div class="back-home">
+                <a href="/" data-link>← Volver a inicio</a>
+            </div>
         </div>
     `;
 

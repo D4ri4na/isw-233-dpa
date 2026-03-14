@@ -5,9 +5,6 @@
 .section-header {
     text-align: center;
     margin-bottom: 50px;
-}
-
-.section-header {
     font-size: 2rem;
 }
 
@@ -20,29 +17,34 @@
     border-radius: 5px;
 }
 
+/* ── Card principal: columna, no fila ── */
 .about__card {
-    display: flex;
-    gap: 30px;
     background: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 36px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
     margin-bottom: 50px;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ── Fila superior: foto a la izquierda, nombre+redes a la derecha ── */
+.about__profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
 }
 
 .about__avatar {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     background-color: #dcdde1;
     border-radius: 50%;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
 }
 
 .about__avatar img {
@@ -53,32 +55,95 @@
     display: block;
 }
 
+.about__identity {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
 .about__name {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #222;
-    text-align: center;
+    line-height: 1.2;
+}
+
+/* ── Redes sociales ── */
+.about__social {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.about__social-link {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background-color: #f39c12;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
 }
 
-.about__content {
-    margin-bottom: 10px;
+.about__social-link:hover {
+    background-color: #e67e22;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(243,156,18,0.4);
 }
 
+.about__social-link img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    display: block;
+}
+
+.about__social-link svg {
+    width: 22px;
+    height: 22px;
+    stroke: white;
+    fill: none;
+    flex-shrink: 0;
+}
+
+/* ── Texto del perfil: DEBAJO del bloque foto+nombre ── */
 .about__content {
     color: #555;
+    border-top: 1px solid #f0ebe2;
+    padding-top: 20px;
+}
+
+.about__content h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2c3e50;
     margin-bottom: 10px;
 }
 
-.about__section {
-    margin-bottom: 20px;
+.about__content p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* ── Secciones inferiores ── */
+.about__section { margin-bottom: 40px; }
+
+.about__section h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 16px;
 }
 
 .education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .education-card {
@@ -88,14 +153,22 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.education-card {
-    margin-bottom: 5px;
+.education-card h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 6px;
 }
 
 .education-card span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #f39c12;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
 }
+
+.education-card p { font-size: 0.85rem; color: #777; }
 
 .hobbies-grid {
     display: grid;
@@ -110,4 +183,23 @@
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     font-size: 0.9rem;
+}
+
+/* ── Dark mode ── */
+body.dark-mode .about__card       { background-color: #16213e; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+body.dark-mode .about__name       { color: #e0e0e0; }
+body.dark-mode .about__content    { border-top-color: #2a4080; }
+body.dark-mode .about__content h3 { color: #e0e0e0; }
+body.dark-mode .about__content p  { color: #b0b0b0; }
+body.dark-mode .about__section h4 { color: #e0e0e0; }
+body.dark-mode .education-card    { background-color: #0f3460; }
+body.dark-mode .education-card h5 { color: #e0e0e0; }
+body.dark-mode .education-card p  { color: #bbb; }
+body.dark-mode .hobbies-grid span { background-color: #16213e; color: #e0e0e0; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .about__profile  { flex-direction: column; align-items: center; }
+    .about__identity { align-items: center; }
+    .about__name     { font-size: 1.5rem; text-align: center; }
 }

@@ -5,7 +5,14 @@ export class BlogCard extends HTMLElement {
         return ['article-id', 'date', 'tag', 'title', 'preview', 'body', 'favorited'];
     }
 
-    connectedCallback()            { this.render(); }
+    connectedCallback() {
+        this.render();
+        // Observa cambios en el modo oscuro
+        if (!this._darkModeObserver) {
+            this._darkModeObserver = new MutationObserver(() => this.updateFavIcon());
+            this._darkModeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        }
+    }
     attributeChangedCallback()     { if (this.isConnected) this.render(); }
 
     render() {
@@ -27,7 +34,8 @@ export class BlogCard extends HTMLElement {
         clone.querySelector('.blog__more p').textContent  = body;
 
         const favBtn = clone.querySelector('.blog__fav-btn');
-        favBtn.textContent = isFav ? '⭐' : '🤍';
+        this._favBtn = favBtn;
+        this.updateFavIcon();
 
         if (isFav) clone.querySelector('.blog__card').classList.add('blog__card--favorited');
 
@@ -43,6 +51,17 @@ export class BlogCard extends HTMLElement {
         this.querySelector('.blog__fav-btn').addEventListener('click', () => {
             this.dispatchEvent(new CustomEvent('toggle-fav', { bubbles: true, detail: { id } }));
         });
+    }
+
+    updateFavIcon() {
+        if (!this._favBtn) return;
+        const isFav = this.getAttribute('favorited') === 'true';
+        const isDark = document.body.classList.contains('dark-mode');
+        if (isFav) {
+            this._favBtn.textContent = '❤️';
+        } else {
+            this._favBtn.textContent = isDark ? '🤍' : '🖤';
+        }
     }
 }
 

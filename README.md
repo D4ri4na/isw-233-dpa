@@ -151,5 +151,7 @@ Se puede visualizar el prototipo interactivo y la guía de estilos:
 ## 12. IAs utilizadas durante el desarrollo
 
 👉 https://chatgpt.com/share/698eaa44-cc28-8010-8e5d-4e80911bae12
+
 👉 https://claude.ai/share/c64028c2-075a-4b0e-
+
 👉 https://claude.ai/share/a474f14b-1ffc-485e-a0e5-0dfbe76b01f2
