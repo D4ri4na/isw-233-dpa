@@ -1,8 +1,40 @@
 /**
- * app.js — Router principal de la SPA
- * Patrones: Strategy (routes), Observer (routechange), Singleton (FavoritesStore), Template Method (blog-card)
+ * app.js — Router principal de la SPA.
+ *
+ * Solución al refresh sin # usando History API + sessionStorage:
+ *
+ *   1. index.html guarda window.location.pathname en sessionStorage
+ *      ANTES de que este módulo cargue (script inline síncrono).
+ *
+ *   2. Al arrancar, restoreRoute() lee esa ruta guardada y ejecuta
+ *      history.replaceState() para restaurar la URL correcta.
+ *
+ *   3. resolve() renderiza la vista correspondiente.
+ *
+ * Esto funciona con Live Server, Five Server, file:// y cualquier
+ * servidor estático — sin # en las URLs, sin instalar nada.
+ *
+ * Patrones implementados:
+ *   Strategy      → objeto `routes`
+ *   Observer      → CustomEvent 'routechange' y 'favs-changed'
+ *   Singleton     → FavoritesStore en store.js
+ *   Template Method → <template id="tpl-blog-card"> + blog-card.js
  */
 
+import { loadStyles }  from './styles.js';
+import './components/index.js';
+import {
+    homePage,
+    aboutPage,
+    projectsPage,
+    blogPage,
+    experiencePage,
+    contactPage,
+} from './pages/index.js';
+
+loadStyles();
+
+// Strategy
 const routes = {
     '/'           : homePage,
     '/about'      : aboutPage,
@@ -19,35 +51,34 @@ function renderPage(pageNode) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// path siempre llega como "/ruta" (sin #)
 function navigate(path) {
-    // Asignar solo la parte después del #
-    window.location.hash = path;
+    window.history.pushState({}, '', path);
+    resolve();
 }
 
 function resolve() {
-    // hash es "#/ruta" → slice(1) da "/ruta"
-    // Si no hay hash, usar "/"
-    const raw  = window.location.hash;
-    const path = raw ? raw.slice(1) : '/';
+    const path    = window.location.pathname;
     const handler = routes[path] ?? routes['/'];
     renderPage(handler());
     window.dispatchEvent(new CustomEvent('routechange', { detail: { path } }));
 }
 
-// Botón atrás/adelante
-window.addEventListener('hashchange', resolve);
+function restoreRoute() {
+    const saved = sessionStorage.getItem('spa:route');
+    if (saved) {
+        sessionStorage.removeItem('spa:route');
+        window.history.replaceState({}, '', saved);
+    }
+}
 
-// Interceptar clicks en [data-link]
-// Los href son "#/ruta" — extraemos solo "/ruta" para navigate()
+window.addEventListener('popstate', resolve);
+
 document.addEventListener('click', (e) => {
     const link = e.target.closest('[data-link]');
     if (!link) return;
     e.preventDefault();
-    const href = link.getAttribute('href'); // "#/ruta"
-    const path = href.startsWith('#') ? href.slice(1) : href; // "/ruta"
-    navigate(path);
+    navigate(link.getAttribute('href'));
 });
 
-// Arranque
-resolve();
+restoreRoute();
+resolve();    

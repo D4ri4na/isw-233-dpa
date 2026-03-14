@@ -2,17 +2,15 @@
  * pages/about.js
  * Vista "Sobre Mí".
  */
-function aboutPage() {
+export function aboutPage() {
     const section = document.createElement('section');
     section.className = 'about page-enter';
-    section.id = 'about';
     section.innerHTML = `
         <div class="container">
             <div class="section-header">
                 <h2>Sobre Mí</h2>
                 <span class="section-header__line"></span>
             </div>
-
             <div class="about__card">
                 <div class="about__avatar">
                     <img src="img/profile.png" alt="Foto de perfil"
@@ -22,21 +20,16 @@ function aboutPage() {
                     <div class="about__name">Dariana Pol Aramayo</div>
                     <div class="about__content">
                         <h3>Perfil Profesional</h3>
-                        <p>
-                            Estudiante de quinto semestre de Ingeniería de Software en la Universidad Católica
-                            Boliviana con una beca por excelencia académica. Como AWS Cloud Club Captain, me
-                            apasiona liderar comunidades tecnológicas y construir puentes entre la academia y
-                            la industria cloud.
-                        </p>
-                        <p>
-                            Mi enfoque combina el desarrollo Full Stack con la arquitectura de hardware e
-                            inteligencia artificial, buscando siempre crear soluciones técnicas que impacten
-                            positivamente en el entorno social y profesional.
-                        </p>
+                        <p>Estudiante de quinto semestre de Ingeniería de Software en la Universidad Católica
+                        Boliviana con una beca por excelencia académica. Como AWS Cloud Club Captain, me
+                        apasiona liderar comunidades tecnológicas y construir puentes entre la academia y
+                        la industria cloud.</p>
+                        <p>Mi enfoque combina el desarrollo Full Stack con la arquitectura de hardware e
+                        inteligencia artificial, buscando siempre crear soluciones técnicas que impacten
+                        positivamente en el entorno social y profesional.</p>
                     </div>
                 </div>
             </div>
-
             <div class="about__section">
                 <h4>Educación</h4>
                 <div class="education-grid">
@@ -57,7 +50,6 @@ function aboutPage() {
                     </div>
                 </div>
             </div>
-
             <div class="about__section">
                 <h4>Hobbies e Intereses</h4>
                 <div class="hobbies-grid">
@@ -68,9 +60,8 @@ function aboutPage() {
                     <span>🍳 Cocina</span>
                 </div>
             </div>
-
             <div class="back-home">
-                <a href="#/" data-link>← Volver a inicio</a>
+                <a href="/" data-link>← Volver a inicio</a>
             </div>
         </div>
     `;

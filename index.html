@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dariana Pol — Portfolio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --color-primary: #f39c12;
@@ -23,32 +21,29 @@
             --radius-md:     12px;
             --radius-lg:     16px;
         }
-    </style>
-
-    <link rel="stylesheet" href="blocks/base.css">
-    <link rel="stylesheet" href="blocks/header.css">
-    <link rel="stylesheet" href="blocks/hero.css">
-    <link rel="stylesheet" href="blocks/about.css">
-    <link rel="stylesheet" href="blocks/blog.css">
-    <link rel="stylesheet" href="blocks/projects.css">
-    <link rel="stylesheet" href="blocks/experience.css">
-    <link rel="stylesheet" href="blocks/contact.css">
-    <link rel="stylesheet" href="blocks/footer.css">
-    <link rel="stylesheet" href="blocks/dark-mode.css">
-
-    <style>
         .nav__link--active {
             background-color: #2c3e50 !important;
             color: white !important;
         }
     </style>
+
+    <script>
+        (function () {
+            const path = window.location.pathname;
+            if (path && path !== '/' && path !== '/index.html') {
+                sessionStorage.setItem('spa:route', path + window.location.search);
+            }
+        })();
+    </script>
 </head>
 <body>
 
     <app-header></app-header>
-    <main id="app-root" style="padding-top: 70px; min-height: calc(100vh - 70px)"></main>
+
+    <main id="app-root" style="padding-top:70px; min-height:calc(100vh - 70px)"></main>
 
     <app-footer></app-footer>
+
     <template id="tpl-blog-card">
         <article class="blog__card">
             <span class="blog__date"></span>
@@ -63,19 +58,7 @@
         </article>
     </template>
 
-    <script src="components/app-header.js"></script>
-    <script src="components/app-footer.js"></script>
-    <script src="components/blog-card.js"></script>
-
-    <script src="pages/blog.js"></script>
-
-    <script src="pages/home.js"></script>
-    <script src="pages/about.js"></script>
-    <script src="pages/projects.js"></script>
-    <script src="pages/experience.js"></script>
-    <script src="pages/contact.js"></script> 
-
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 
 </body>
 </html>

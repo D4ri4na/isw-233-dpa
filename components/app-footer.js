@@ -1,9 +1,4 @@
-/**
- * app-footer.js
- * Web Component para el footer de la SPA.
- * Patrón: Web Component con Shadow-less encapsulation.
- */
-class AppFooter extends HTMLElement {
+export class AppFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <footer class="footer">
@@ -15,10 +10,10 @@ class AppFooter extends HTMLElement {
                     <div class="footer__column">
                         <h3 class="footer__title">Enlaces Rápidos</h3>
                         <ul class="footer__links">
-                            <li><a href="#/" data-link>Inicio</a></li>
-                            <li><a href="#/proyectos" data-link>Proyectos</a></li>
-                            <li><a href="#/about" data-link>Sobre Mí</a></li>
-                            <li><a href="#/contacto" data-link>Contacto</a></li>
+                            <li><a href="/" data-link>Inicio</a></li>
+                            <li><a href="/proyectos" data-link>Proyectos</a></li>
+                            <li><a href="/about" data-link>Sobre Mí</a></li>
+                            <li><a href="/contacto" data-link>Contacto</a></li>
                         </ul>
                     </div>
                     <div class="footer__column">
@@ -39,7 +34,6 @@ class AppFooter extends HTMLElement {
                 </div>
             </footer>
         `;
-
         this.querySelector('#newsletter-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const input = e.target.querySelector('input');
