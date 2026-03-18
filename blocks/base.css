@@ -32,8 +32,12 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
     display: inline-block;
-    min-width: 140px;        /* agrega esto */
-    text-align: center;      /* y esto */
+    min-width: 140px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
 }
 
 .btn--primary {
@@ -49,7 +53,8 @@ body {
 .btn--outline {
     border: 2px solid #f39c12;
     color: #f39c12;
-    padding: 8px 26px;  /* compensa el espacio que ocupa el borde */
+    padding: 8px 26px;
+    background: transparent;
 }
 
 .btn--outline:hover {
@@ -67,8 +72,70 @@ body {
     text-decoration: none;
     color: #f39c12;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .back-home a:hover {
     text-decoration: underline;
 }
+
+/* Page transition */
+.page-enter {
+    animation: fadeInUp 0.35s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+[data-observe] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+[data-observe].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-observe]:nth-child(2) { transition-delay: 0.08s; }
+[data-observe]:nth-child(3) { transition-delay: 0.16s; }
+[data-observe]:nth-child(4) { transition-delay: 0.24s; }
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-enter {
+    animation: cardSlideIn 0.35s ease forwards;
+}
+
+[data-observe] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+[data-observe].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-observe]:nth-child(2) { transition-delay: 0.08s; }
+[data-observe]:nth-child(3) { transition-delay: 0.16s; }
+[data-observe]:nth-child(4) { transition-delay: 0.24s; }
