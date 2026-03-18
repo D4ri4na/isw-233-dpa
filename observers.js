@@ -29,3 +29,21 @@ export function initMutationObserver(gridEl) {
     observer.observe(gridEl, { childList: true });
     return observer;
 }
+
+export function initResizeObserver(skillsGrid) {
+    const observer = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+            const width = entry.contentRect.width;
+            if (width < 340) {
+                skillsGrid.style.gridTemplateColumns = '1fr';
+            } else if (width < 580) {
+                skillsGrid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            } else {
+                skillsGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            }
+        }
+    });
+ 
+    observer.observe(skillsGrid);
+    return observer;
+}

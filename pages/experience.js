@@ -1,4 +1,4 @@
-import { initIntersectionObserver } from '../observers.js';
+import { initIntersectionObserver, initResizeObserver } from '../observers.js';
 
 export function experiencePage() {
     const section = document.createElement('section');
@@ -42,7 +42,7 @@ export function experiencePage() {
                 <h3 class="exp-block__title" data-observe>
                     <span class="exp-block__icon--code">&lt;&gt;</span> Habilidades Técnicas
                 </h3>
-                <div class="skills-grid">
+                <div class="skills-grid" id="skills-grid">
                     <div class="skill-card" data-observe>
                         <span class="skill-card__category">Frontend</span>
                         <div class="skill-card__tags">
@@ -76,6 +76,9 @@ export function experiencePage() {
         </div>
     `;
 
+    initResizeObserver(section.querySelector('#skills-grid'));
+
     initIntersectionObserver(section);
+
     return section;
 }

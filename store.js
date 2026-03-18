@@ -15,6 +15,7 @@ export const BLOG_ARTICLES = [
         preview: 'Cómo implementamos patrones como State y Strategy en un sistema de citas médicas en Java.',
         body: 'No se trata solo de escribir código que funcione, sino de estructurarlo con patrones SOLID para que sistemas complejos, como el de una clínica médica, puedan evolucionar de forma escalable y mantenible.'
     },
+    
     {
         id: '3',
         date: '28 de enero de 2026',

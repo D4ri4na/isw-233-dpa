@@ -10,54 +10,7 @@ El portafolio ha sido **migrado a una Single Page Application (SPA)** usando HTM
 
 ---
 
-## 2. Estructura del Proyecto
-
-```
-ISW-233-DPA/
-│
-├── index.html                  ← Shell único de la SPA
-├── 404.html                    ← Redirección para Live Server / GitHub Pages
-├── app.js                      ← Router principal + punto de entrada (ES Module)
-├── store.js                    ← BLOG_ARTICLES + FavoritesStore (Singleton)
-├── styles.js                   ← Centraliza todos los imports CSS dinámicamente
-├── README.md
-│
-├── components/
-│   ├── index.js                ← Barrel: registra todos los Web Components
-│   ├── app-header.js           ← Web Component: navegación + dark mode
-│   ├── app-footer.js           ← Web Component: footer + newsletter
-│   └── blog-card.js            ← Web Component: tarjeta de artículo del blog
-│
-├── pages/
-│   ├── index.js                ← Barrel: exporta todas las funciones de vista
-│   ├── home.js                 ← Vista /  (Hero + preview Blog)
-│   ├── about.js                ← Vista /about
-│   ├── projects.js             ← Vista /proyectos
-│   ├── blog.js                 ← Vista /blog (filtros + favoritos)
-│   ├── experience.js           ← Vista /experiencia
-│   └── contact.js              ← Vista /contacto
-│
-├── blocks/                     ← CSS en nomenclatura BEM (un archivo por bloque)
-│   ├── base.css                ← Reset, tipografía base y utilidades globales
-│   ├── header.css              ← Bloque Header / Navbar
-│   ├── hero.css                ← Bloque Hero (portada)
-│   ├── about.css               ← Bloque Sobre Mí
-│   ├── blog.css                ← Bloque Blog + filtros + favoritos
-│   ├── projects.css            ← Bloque Proyectos
-│   ├── experience.css          ← Bloque Experiencia y Skills
-│   ├── contact.css             ← Bloque Contacto
-│   ├── footer.css              ← Bloque Footer
-│   └── dark-mode.css           ← Modo oscuro (todos los overrides)
-│
-├── vendor/
-│   └── normalize.css           ← Librería externa (no modificar)
-│
-└── img/                        ← Imágenes del proyecto
-```
-
----
-
-## 3. Rutas de la SPA
+## 2. Rutas de la SPA
 
 | Ruta | Vista | Descripción |
 |------|-------|-------------|
@@ -70,7 +23,7 @@ ISW-233-DPA/
 
 ---
 
-## 4. Bloques BEM Identificados
+## 3. Bloques BEM Identificados
 
 - **header** — Barra de navegación fija con enlaces a las secciones de la SPA.
 - **hero** — Sección de presentación principal con nombre, descripción y botones de acción.
@@ -95,7 +48,7 @@ ISW-233-DPA/
 
 ---
 
-## 5. Patrones de Diseño
+## 4. Patrones de Diseño
 
 ### Patrón 1 — 🔀 Strategy
 **Archivo:** `app.js` — objeto `routes`
@@ -132,7 +85,7 @@ ISW-233-DPA/
 **Por qué aquí:** El `<template>` HTML es la implementación nativa del patrón. Define el "algoritmo" — la estructura visual de una card — una sola vez. Cada instancia de `blog-card` ejecuta los pasos concretos (rellenar fecha, tag, título, cuerpo). Si el layout de todas las cards necesita cambiar (agregar un campo de tiempo de lectura, por ejemplo), se edita **un único `<template>`** y todas las instancias lo reflejan automáticamente, sin tocar cada card individualmente.
 
 ---
-## 6. Observer APIs
+## 5. Observer APIs
  
 ### IntersectionObserver
 **Archivo:** `observers.js` → `initIntersectionObserver()`, usado en `pages/projects.js`, `pages/blog.js`, `pages/experience.js`, `pages/home.js`
@@ -154,9 +107,19 @@ Un `scroll` listener se dispara en cada pixel de desplazamiento, en el hilo prin
 **Por qué esta API y no un callback manual en renderCards:**
 Si `renderCards` llamara directamente a la función de animación, `blog.js` estaría acoplado a la lógica de presentación. Con `MutationObserver` el sistema de animación es completamente independiente — reacciona a cambios en el DOM sin importar quién los causa. Si mañana otra parte del código inserta cards, se animarán automáticamente.
 
+### ResizeObserver
+**Archivo:** `observers.js` → `initResizeObserver()`, usado en `pages/experience.js`
+ 
+**Qué problema resuelve:** El grid de habilidades técnicas (`.skills-grid`) necesita cambiar de 3 a 2 a 1 columna según el espacio disponible. Las media queries CSS solo reaccionan al ancho del **viewport**, no al ancho del **contenedor** — si el panel lateral de VS Code está abierto, el contenedor puede ser angosto aunque el viewport sea amplio. Container queries (`@container`) todavía no tienen soporte universal completo.
+ 
+**Implementación:** Se observa `.skills-grid` con `ResizeObserver`. Cada vez que su ancho cambia (por cualquier causa: resize de ventana, panel lateral, zoom), se ajustan las columnas CSS directamente en el elemento según breakpoints del contenedor: `< 340px` → 1 col, `< 560px` → 2 col, `≥ 560px` → 3 col.
+ 
+**Por qué esta API y no media queries:**
+Una media query no puede conocer el ancho de un contenedor específico, solo el del viewport. `ResizeObserver` observa exactamente el elemento que nos interesa y responde a cualquier causa de cambio de tamaño, no solo al resize de ventana. Es la única API del navegador diseñada para este propósito.
+
 ---
 
-## 7. Cómo se hizo
+## 6. Cómo se hizo
 
 - **Diseño UX/UI:** Prototipado inicial y diseño de alta fidelidad realizado en Figma.
 - **Desarrollo Frontend:** Implementación de componentes responsivos con estándares modernos de desarrollo web, metodología BEM y arquitectura de módulos ES6.
@@ -164,14 +127,14 @@ Si `renderCards` llamara directamente a la función de animación, `blog.js` est
 
 ---
 
-## 8. Enlace al Diseño (Figma)
+## 7. Enlace al Diseño (Figma)
 
 Se puede visualizar el prototipo interactivo y la guía de estilos:
 👉 https://www.figma.com/design/iS2Np4GSlEEDQf7hPDzBt1/Figma?node-id=0-1&t=3AI7tXRMcbBbMtLC-1
 
 ---
 
-## 9. IAs utilizadas durante el desarrollo
+## 8. IAs utilizadas durante el desarrollo
 
 👉 https://chatgpt.com/share/698eaa44-cc28-8010-8e5d-4e80911bae12
 
