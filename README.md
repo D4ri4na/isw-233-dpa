@@ -144,6 +144,16 @@ ISW-233-DPA/
 **Por qué esta API y no un scroll listener:**
 Un `scroll` listener se dispara en cada pixel de desplazamiento, en el hilo principal, pudiendo bloquear la UI. `IntersectionObserver` corre fuera del hilo principal y solo notifica cuando el elemento cruza el umbral definido. Es exactamente la herramienta diseñada para este caso de uso — no hay alternativa más eficiente en el navegador.
 
+### MutationObserver
+**Archivo:** `observers.js` → `initMutationObserver()`, usado en `pages/blog.js` y `pages/home.js`
+ 
+**Qué problema resuelve:** Las `blog-card` se insertan dinámicamente en el DOM cada vez que el usuario cambia de filtro o carga la página. Necesitamos aplicar animación de entrada a cada card nueva sin que `blog.js` tenga que encargarse de eso, y sin usar `setTimeout` ni polling para "esperar" a que el DOM cambie.
+ 
+**Implementación:** Se observa el `div.blog__grid`. Cuando `renderCards()` inserta nuevos nodos, el observer detecta el cambio en `childList`, lee el índice de cada nodo añadido y le asigna un `animationDelay` escalonado + la clase `.card-enter`, creando un efecto stagger automático. El observer se desconecta antes de limpiar el grid y se reconecta antes de insertar, evitando animaciones espurias en el `innerHTML = ''`.
+ 
+**Por qué esta API y no un callback manual en renderCards:**
+Si `renderCards` llamara directamente a la función de animación, `blog.js` estaría acoplado a la lógica de presentación. Con `MutationObserver` el sistema de animación es completamente independiente — reacciona a cambios en el DOM sin importar quién los causa. Si mañana otra parte del código inserta cards, se animarán automáticamente.
+
 ---
 
 ## 7. Cómo se hizo

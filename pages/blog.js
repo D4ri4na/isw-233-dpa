@@ -1,5 +1,5 @@
 import { BLOG_ARTICLES, FavoritesStore } from '../store.js';
-import { initIntersectionObserver } from '../observers.js';
+import { initIntersectionObserver, initMutationObserver } from '../observers.js';
 
 export function blogPage() {
     const wrapper = document.createElement('section');
@@ -25,8 +25,13 @@ export function blogPage() {
     const filters = wrapper.querySelector('#blog-filters');
     let currentFilter = 'all';
 
+    const mutObs = initMutationObserver(grid);
+
     function renderCards(filter) {
+        mutObs.disconnect();
         grid.innerHTML = '';
+        mutObs.observe(grid, { childList: true });
+
         const favs = FavoritesStore.getAll();
         let articles = BLOG_ARTICLES;
         if (filter === 'favs')     articles = BLOG_ARTICLES.filter(a => favs.includes(a.id));
@@ -66,7 +71,6 @@ export function blogPage() {
     });
 
     renderCards('all');
-
     initIntersectionObserver(wrapper);
 
     return wrapper;

@@ -1,5 +1,5 @@
 import { BLOG_ARTICLES, FavoritesStore } from '../store.js';
-import { initIntersectionObserver } from '../observers.js';
+import { initIntersectionObserver, initMutationObserver } from '../observers.js';
 
 export function homePage() {
     const section = document.createElement('div');
@@ -36,6 +36,9 @@ export function homePage() {
     `;
 
     const grid = section.querySelector('#home-blog-grid');
+
+    initMutationObserver(grid);
+
     BLOG_ARTICLES.slice(0, 2).forEach(article => {
         const card = document.createElement('blog-card');
         card.setAttribute('article-id', article.id);
