@@ -1,14 +1,15 @@
 import { BLOG_ARTICLES, FavoritesStore } from '../store.js';
+import { initIntersectionObserver } from '../observers.js';
 
 export function blogPage() {
     const wrapper = document.createElement('section');
     wrapper.className = 'blog page-enter';
     wrapper.innerHTML = `
         <div class="container">
-            <h2 class="blog__title">Blog</h2>
+            <h2 class="blog__title" data-observe>Blog</h2>
             <span class="blog__title-line"></span>
-            <p class="blog__subtitle">Comparto mis conocimientos y experiencias en desarrollo de software</p>
-            <div class="blog__filters" id="blog-filters">
+            <p class="blog__subtitle" data-observe>Comparto mis conocimientos y experiencias en desarrollo de software</p>
+            <div class="blog__filters" id="blog-filters" data-observe>
                 <button class="blog__filter-btn blog__filter-btn--active" data-filter="all">Todos</button>
                 <button class="blog__filter-btn" data-filter="Cloud / AWS">☁️ Cloud / AWS</button>
                 <button class="blog__filter-btn" data-filter="Arquitectura">🏗️ Arquitectura</button>
@@ -17,9 +18,6 @@ export function blogPage() {
                 <button class="blog__filter-btn" data-filter="favs">⭐ Favoritos</button>
             </div>
             <div class="blog__grid" id="blog-grid"></div>
-            <div class="back-home">
-                <a href="/" data-link>← Volver a inicio</a>
-            </div>
         </div>
     `;
 
@@ -31,8 +29,8 @@ export function blogPage() {
         grid.innerHTML = '';
         const favs = FavoritesStore.getAll();
         let articles = BLOG_ARTICLES;
-        if (filter === 'favs')       articles = BLOG_ARTICLES.filter(a => favs.includes(a.id));
-        else if (filter !== 'all')   articles = BLOG_ARTICLES.filter(a => a.tag === filter);
+        if (filter === 'favs')     articles = BLOG_ARTICLES.filter(a => favs.includes(a.id));
+        else if (filter !== 'all') articles = BLOG_ARTICLES.filter(a => a.tag === filter);
 
         if (articles.length === 0) {
             grid.innerHTML = `<p style="color:#aaa;text-align:center;grid-column:1/-1;padding:40px 0">
@@ -52,22 +50,24 @@ export function blogPage() {
         });
     }
 
-    // Strategy
     filters.addEventListener('click', (e) => {
         const btn = e.target.closest('.blog__filter-btn');
         if (!btn) return;
-        filters.querySelectorAll('.blog__filter-btn').forEach(b => b.classList.remove('blog__filter-btn--active'));
+        filters.querySelectorAll('.blog__filter-btn')
+               .forEach(b => b.classList.remove('blog__filter-btn--active'));
         btn.classList.add('blog__filter-btn--active');
         currentFilter = btn.dataset.filter;
         renderCards(currentFilter);
     });
 
-    // Observer
     wrapper.addEventListener('toggle-fav', (e) => {
         FavoritesStore.toggle(e.detail.id);
         renderCards(currentFilter);
     });
 
     renderCards('all');
+
+    initIntersectionObserver(wrapper);
+
     return wrapper;
 }

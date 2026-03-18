@@ -1,16 +1,20 @@
+import { initIntersectionObserver } from '../observers.js';
+
 export function experiencePage() {
     const section = document.createElement('section');
     section.className = 'experience page-enter';
     section.innerHTML = `
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-observe>
                 <h2>Experiencia &amp; Habilidades</h2>
                 <span class="section-header__line"></span>
             </div>
             <div class="exp-block">
-                <h3 class="exp-block__title"><span class="exp-block__icon">💼</span> Experiencia Profesional</h3>
+                <h3 class="exp-block__title" data-observe>
+                    <span class="exp-block__icon">💼</span> Experiencia Profesional
+                </h3>
                 <div class="exp-list">
-                    <div class="exp-card">
+                    <div class="exp-card" data-observe>
                         <div class="exp-card__img">
                             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80" alt="Tech Solutions">
                         </div>
@@ -21,7 +25,7 @@ export function experiencePage() {
                             <p>Liderazgo de equipo de desarrollo en proyectos de alto impacto. Implementación de arquitecturas escalables.</p>
                         </div>
                     </div>
-                    <div class="exp-card">
+                    <div class="exp-card" data-observe>
                         <div class="exp-card__img">
                             <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=300&q=80" alt="Digital Innovations">
                         </div>
@@ -35,31 +39,43 @@ export function experiencePage() {
                 </div>
             </div>
             <div class="exp-block">
-                <h3 class="exp-block__title"><span class="exp-block__icon--code">&lt;&gt;</span> Habilidades Técnicas</h3>
+                <h3 class="exp-block__title" data-observe>
+                    <span class="exp-block__icon--code">&lt;&gt;</span> Habilidades Técnicas
+                </h3>
                 <div class="skills-grid">
-                    <div class="skill-card">
+                    <div class="skill-card" data-observe>
                         <span class="skill-card__category">Frontend</span>
-                        <div class="skill-card__tags"><span>React</span><span>Angular</span><span>TypeScript</span></div>
+                        <div class="skill-card__tags">
+                            <span>React</span><span>Angular</span><span>TypeScript</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card" data-observe>
                         <span class="skill-card__category">Backend</span>
-                        <div class="skill-card__tags"><span>Node.js</span><span>Python</span><span>Java</span><span>C#</span></div>
+                        <div class="skill-card__tags">
+                            <span>Node.js</span><span>Python</span><span>Java</span><span>C#</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card" data-observe>
                         <span class="skill-card__category">Herramientas</span>
-                        <div class="skill-card__tags"><span>Git</span><span>Docker</span><span>AWS</span><span>CI/CD</span><span>Azure</span></div>
+                        <div class="skill-card__tags">
+                            <span>Git</span><span>Docker</span><span>AWS</span>
+                            <span>CI/CD</span><span>Azure</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card" data-observe>
                         <span class="skill-card__category">Bases de Datos</span>
-                        <div class="skill-card__tags"><span>MongoDB</span><span>PostgreSQL</span><span>MySQL</span><span>Supabase</span></div>
+                        <div class="skill-card__tags">
+                            <span>MongoDB</span><span>PostgreSQL</span><span>MySQL</span><span>Supabase</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="exp-block">
-                <h3 class="exp-block__title"><span class="exp-block__icon--code">🗂️</span> Certificaciones</h3>
+            <div class="back-home" data-observe>
+                <a href="/" data-link>← Volver a inicio</a>
             </div>
-            <div class="back-home"><a href="/" data-link>← Volver a inicio</a></div>
         </div>
     `;
+
+    initIntersectionObserver(section);
     return section;
 }

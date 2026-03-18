@@ -132,8 +132,21 @@ ISW-233-DPA/
 **Por qué aquí:** El `<template>` HTML es la implementación nativa del patrón. Define el "algoritmo" — la estructura visual de una card — una sola vez. Cada instancia de `blog-card` ejecuta los pasos concretos (rellenar fecha, tag, título, cuerpo). Si el layout de todas las cards necesita cambiar (agregar un campo de tiempo de lectura, por ejemplo), se edita **un único `<template>`** y todas las instancias lo reflejan automáticamente, sin tocar cada card individualmente.
 
 ---
+## 6. Observer APIs
+ 
+### IntersectionObserver
+**Archivo:** `observers.js` → `initIntersectionObserver()`, usado en `pages/projects.js`, `pages/blog.js`, `pages/experience.js`, `pages/home.js`
+ 
+**Qué problema resuelve:** Los elementos de cada vista aparecen de golpe al montar la página. Queremos que las project-cards, exp-cards, skill-cards y secciones del blog "entren" con una transición suave al hacer scroll, sin penalizar el rendimiento.
+ 
+**Implementación:** Cada elemento con `data-observe` empieza invisible (`opacity: 0, translateY(28px)`). El observer detecta cuando supera el 15% de visibilidad y añade la clase `.is-visible`, que activa la transición CSS. Una vez visible, el elemento se desuscribe para no consumir recursos.
+ 
+**Por qué esta API y no un scroll listener:**
+Un `scroll` listener se dispara en cada pixel de desplazamiento, en el hilo principal, pudiendo bloquear la UI. `IntersectionObserver` corre fuera del hilo principal y solo notifica cuando el elemento cruza el umbral definido. Es exactamente la herramienta diseñada para este caso de uso — no hay alternativa más eficiente en el navegador.
 
-## 10. Cómo se hizo
+---
+
+## 7. Cómo se hizo
 
 - **Diseño UX/UI:** Prototipado inicial y diseño de alta fidelidad realizado en Figma.
 - **Desarrollo Frontend:** Implementación de componentes responsivos con estándares modernos de desarrollo web, metodología BEM y arquitectura de módulos ES6.
@@ -141,14 +154,14 @@ ISW-233-DPA/
 
 ---
 
-## 11. Enlace al Diseño (Figma)
+## 8. Enlace al Diseño (Figma)
 
 Se puede visualizar el prototipo interactivo y la guía de estilos:
 👉 https://www.figma.com/design/iS2Np4GSlEEDQf7hPDzBt1/Figma?node-id=0-1&t=3AI7tXRMcbBbMtLC-1
 
 ---
 
-## 12. IAs utilizadas durante el desarrollo
+## 9. IAs utilizadas durante el desarrollo
 
 👉 https://chatgpt.com/share/698eaa44-cc28-8010-8e5d-4e80911bae12
 

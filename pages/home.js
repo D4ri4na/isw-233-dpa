@@ -1,4 +1,5 @@
 import { BLOG_ARTICLES, FavoritesStore } from '../store.js';
+import { initIntersectionObserver } from '../observers.js';
 
 export function homePage() {
     const section = document.createElement('div');
@@ -23,11 +24,11 @@ export function homePage() {
 
         <section class="blog" id="blog">
             <div class="container">
-                <h2 class="blog__title">Blog</h2>
+                <h2 class="blog__title" data-observe>Blog</h2>
                 <span class="blog__title-line"></span>
-                <p class="blog__subtitle">Comparto mis conocimientos y experiencias en desarrollo de software</p>
+                <p class="blog__subtitle" data-observe>Comparto mis conocimientos y experiencias en desarrollo de software</p>
                 <div class="blog__grid" id="home-blog-grid"></div>
-                <div class="back-home" style="margin-top:40px">
+                <div class="back-home" style="margin-top:40px" data-observe>
                     <a href="/blog" data-link>Ver todos los artículos →</a>
                 </div>
             </div>
@@ -53,5 +54,6 @@ export function homePage() {
         if (card) card.setAttribute('favorited', FavoritesStore.has(e.detail.id) ? 'true' : 'false');
     });
 
+    initIntersectionObserver(section);
     return section;
 }
