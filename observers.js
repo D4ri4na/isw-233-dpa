@@ -14,3 +14,18 @@ export function initIntersectionObserver(root) {
     root.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
     return observer;
 }
+
+export function initMutationObserver(gridEl) {
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach((node, i) => {
+                if (node.nodeType !== Node.ELEMENT_NODE) return;
+                node.style.animationDelay = `${i * 70}ms`;
+                node.classList.add('card-enter');
+            });
+        });
+    });
+
+    observer.observe(gridEl, { childList: true });
+    return observer;
+}
