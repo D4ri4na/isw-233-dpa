@@ -1,26 +1,3 @@
-/**
- * app.js — Router principal de la SPA.
- *
- * Solución al refresh sin # usando History API + sessionStorage:
- *
- *   1. index.html guarda window.location.pathname en sessionStorage
- *      ANTES de que este módulo cargue (script inline síncrono).
- *
- *   2. Al arrancar, restoreRoute() lee esa ruta guardada y ejecuta
- *      history.replaceState() para restaurar la URL correcta.
- *
- *   3. resolve() renderiza la vista correspondiente.
- *
- * Esto funciona con Live Server, Five Server, file:// y cualquier
- * servidor estático — sin # en las URLs, sin instalar nada.
- *
- * Patrones implementados:
- *   Strategy      → objeto `routes`
- *   Observer      → CustomEvent 'routechange' y 'favs-changed'
- *   Singleton     → FavoritesStore en store.js
- *   Template Method → <template id="tpl-blog-card"> + blog-card.js
- */
-
 import { loadStyles }  from './styles.js';
 import './components/index.js';
 import {
@@ -34,7 +11,6 @@ import {
 
 loadStyles();
 
-// Strategy
 const routes = {
     '/'           : homePage,
     '/about'      : aboutPage,
@@ -81,4 +57,4 @@ document.addEventListener('click', (e) => {
 });
 
 restoreRoute();
-resolve();    
+resolve();
