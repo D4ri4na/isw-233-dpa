@@ -6,22 +6,22 @@
     --bg-light: #f5f1e8;
     --text-dark: #2c3e50;
     --text-muted: #777;
-    --white: #ffffff;
-    --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --white: #fff;
+    --shadow-sm: 0 4px 15px rgb(0 0 0 / 5%);
+    --shadow-md: 0 4px 16px rgb(0 0 0 / 8%);
     --radius-sm: 10px;
     --radius-md: 12px;
     --radius-lg: 16px;
 }
 
-@import './vendor/normalize.css';
-@import './blocks/base.css';
-@import './blocks/header.css';
-@import './blocks/hero.css';
-@import './blocks/about.css';
-@import './blocks/blog.css';
-@import './blocks/projects.css';
-@import './blocks/experience.css';
-@import './blocks/contact.css';
-@import './blocks/footer.css';
-@import './blocks/dark-mode.css';
+@import url('./vendor/normalize.css');
+@import url('./blocks/base.css');
+@import url('./blocks/header.css');
+@import url('./blocks/hero.css');
+@import url('./blocks/about.css');
+@import url('./blocks/blog.css');
+@import url('./blocks/projects.css');
+@import url('./blocks/experience.css');
+@import url('./blocks/contact.css');
+@import url('./blocks/footer.css');
+@import url('./blocks/dark-mode.css');

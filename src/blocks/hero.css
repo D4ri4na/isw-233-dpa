@@ -22,7 +22,7 @@
 
 .hero__description {
     max-width: 600px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 30px;
     color: #555;
 }
 
@@ -52,12 +52,13 @@
     0%, 100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(10px);
     }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .hero__title {
         font-size: 2.2rem;
     }

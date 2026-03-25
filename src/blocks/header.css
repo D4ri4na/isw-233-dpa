@@ -10,7 +10,7 @@
 
 .header--scrolled {
     background-color: #e67e22;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
 }
 
 .nav {
@@ -38,7 +38,7 @@
     background-color: #f8e6c5;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .nav__list {
         gap: 10px;
     }

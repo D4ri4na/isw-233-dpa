@@ -62,14 +62,14 @@
 
 .social-links__link:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 14px rgb(0 0 0 / 8%);
 }
 
 .contact__form {
     background-color: #fffaf0;
     padding: 40px;
     border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 30px rgb(0 0 0 / 8%);
 }
 
 .contact__form h3 {
@@ -89,7 +89,7 @@
     padding: 12px 14px;
     border-radius: 10px;
     border: 1px solid #e5e5e5;
-    background-color: #ffffff;
+    background-color: #fff;
     font-size: 0.95rem;
     margin-bottom: 18px;
     transition: 0.25s;
@@ -99,7 +99,7 @@
 .contact__form textarea:focus {
     outline: none;
     border-color: #f39c12;
-    box-shadow: 0 0 0 3px rgba(243,156,18,0.15);
+    box-shadow: 0 0 0 3px rgb(243 156 18 / 15%);
 }
 
 .contact__form button {
@@ -122,10 +122,10 @@
 .contact__form button:hover {
     background-color: #e67e22;
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 18px rgb(0 0 0 / 10%);
 }
 
-@media (max-width: 900px) {
+@media (width <= 900px) {
     .contact__grid {
         grid-template-columns: 1fr;
         gap: 40px;

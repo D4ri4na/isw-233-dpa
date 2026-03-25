@@ -1,0 +1,22 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-selector-bem-pattern"],
+  "rules": {
+    "plugin/selector-bem-pattern": {
+      "preset": "bem"
+    },
+    "selector-class-pattern": null,
+    "keyframes-name-pattern": null,
+    "font-family-name-quotes": null,
+    "import-notation": null,
+    "no-invalid-position-at-import-rule": null,
+    "media-feature-range-notation": null,
+    "color-function-notation": "modern",
+    "alpha-value-notation": "percentage",
+    "color-hex-length": "short",
+    "declaration-block-single-line-max-declarations": null,
+    "no-duplicate-selectors": null,
+    "no-descending-specificity": null,
+    "no-empty-source": null
+  }
+}
