@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+import path from 'path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   root: 'src',
@@ -13,7 +13,7 @@ export default defineConfig({
   },
   plugins: [
     handlebars({
-      partialDirectory: resolve(__dirname, 'src/partials'),
+      partialDirectory: path.resolve(__dirname, 'src/partials'),
     }),
   ],
 });
