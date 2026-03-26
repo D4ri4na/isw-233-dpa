@@ -1,5 +1,4 @@
 import { initIntersectionObserver } from '../observers.js';
-import { renderTemplate }           from '../hbs.js';
 
 const PROJECTS = [
     {
@@ -32,7 +31,24 @@ export function projectsPage() {
     const section = document.createElement('section');
     section.className = 'projects page-enter';
 
-    const cardsHTML = renderTemplate('tpl-project-card', { projects: PROJECTS });
+    const cardsHTML = PROJECTS.map(p => `
+        <article class="project-card">
+            <div class="project-card__img">
+                <img src="${p.img}" alt="${p.title}"
+                     onerror="this.src='${p.fallback}'">
+            </div>
+            <div class="project-card__body">
+                <h3>${p.title}</h3>
+                <p>${p.description}</p>
+                <div class="project-card__tags">
+                    ${p.tags.map(t => `<span>${t}</span>`).join('')}
+                </div>
+                <div class="project-card__links">
+                    <a href="${p.repo}" target="_blank">Ver repositorio →</a>
+                </div>
+            </div>
+        </article>
+    `).join('');
 
     section.innerHTML = `
         <div class="container">

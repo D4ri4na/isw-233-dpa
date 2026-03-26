@@ -1,4 +1,4 @@
-import { FavoritesStore } from '../store.js';
+import { FavoritesStore } from '../../store.js';
 
 export class BlogCard extends HTMLElement {
     static get observedAttributes() {
