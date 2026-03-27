@@ -6,7 +6,9 @@ Este proyecto consiste en el desarrollo de una plataforma web integral diseñada
 
 El portafolio ha sido **migrado a una Single Page Application (SPA)** usando HTML/CSS/JS puro, aplicando la metodología **BEM** para los estilos, **Web Components** para encapsular la interfaz, la **History API** para navegación sin recargas, y **4 patrones de diseño de software** documentados a continuación.
 
-**Sin frameworks. Sin instalaciones. Corre directo en el navegador.**
+En la rama `sprint/vite-handlebars` el proyecto fue además **refactorizado con Vite como bundler**, integrando **Handlebars** como motor de plantillas parciales, **PostCSS** como preprocesador CSS, y **ESLint + Stylelint** como linters estáticos. La estructura de archivos fue reorganizada siguiendo BEM estricto en el sistema de archivos.
+
+**Sin frameworks de UI. Corre con `npm run dev`.**
 
 ---
 
@@ -23,7 +25,40 @@ El portafolio ha sido **migrado a una Single Page Application (SPA)** usando HTM
 
 ---
 
-## 3. Bloques BEM Identificados
+## 3. Stack de Herramientas (rama sprint/vite-handlebars)
+
+| Herramienta | Rol |
+|---|---|
+| **Vite** | Bundler y dev server (`npm run dev`, `npm run build`) |
+| **Handlebars** | Motor de plantillas para partials reutilizables |
+| **PostCSS** | Preprocesador CSS con `postcss-import`, `postcss-nested`, `autoprefixer` |
+| **ESLint** | Análisis estático de JavaScript |
+| **Stylelint** | Análisis estático de CSS con validación de nomenclatura BEM |
+
+### Scripts disponibles
+
+```bash
+npm run dev        # levanta el servidor de desarrollo en localhost:5173
+npm run build      # genera la carpeta dist/ para producción
+npm run preview    # previsualiza el build de producción
+npm run lint:js    # ejecuta ESLint sobre src/**/*.js
+npm run lint:css   # ejecuta Stylelint sobre src/**/*.css
+npm run lint       # ejecuta ambos linters
+```
+
+---
+
+## 4. Partials de Handlebars
+
+Se identificaron y extrajeron 3 partials reutilizables en `src/partials/`:
+
+- **`head.hbs`** — meta tags y fuente de Google Fonts, usado en el `<head>` del HTML.
+- **`dark-mode-btn.hbs`** — botón flotante de modo oscuro, evita duplicarlo si se agregan más páginas.
+- **`blog-card-template.hbs`** — el `<template>` HTML nativo que define la estructura de cada card del blog (patrón Template Method).
+
+---
+
+## 5. Bloques BEM Identificados
 
 - **header** — Barra de navegación fija con enlaces a las secciones de la SPA.
 - **hero** — Sección de presentación principal con nombre, descripción y botones de acción.
@@ -48,7 +83,7 @@ El portafolio ha sido **migrado a una Single Page Application (SPA)** usando HTM
 
 ---
 
-## 4. Patrones de Diseño
+## 6. Patrones de Diseño
 
 ### Patrón 1 — 🔀 Strategy
 **Archivo:** `app.js` — objeto `routes`
@@ -60,11 +95,11 @@ El portafolio ha sido **migrado a una Single Page Application (SPA)** usando HTM
 ---
 
 ### Patrón 2 — 👁️ Observer
-**Archivos:** `app.js`, `store.js`, `components/app-header.js`, `pages/blog.js`
+**Archivos:** `app.js`, `store.js`, `components/header/header.js`, `pages/blog.js`
 
 **Qué es:** Define una dependencia uno-a-muchos entre objetos. Cuando uno cambia estado, todos sus dependientes son notificados y actualizados automáticamente.
 
-**Por qué aquí:** El router no conoce el header; el store de favoritos no conoce las cards del blog. Se comunican a través de `CustomEvent` — desacoplamiento total. Si en el futuro se agrega un componente que necesite saber cuándo cambia la ruta (un breadcrumb, por ejemplo), solo se suscribe al evento `routechange` sin tocar ningún otro archivo. Los módulos son independientes y extensibles.
+**Por qué aquí:** El router no conoce el header; el store de favoritos no conoce las cards del blog. Se comunican a través de `CustomEvent` — desacoplamiento total. Si en el futuro se agrega un componente que necesite saber cuándo cambia la ruta, solo se suscribe al evento `routechange` sin tocar ningún otro archivo.
 
 ---
 
@@ -73,68 +108,54 @@ El portafolio ha sido **migrado a una Single Page Application (SPA)** usando HTM
 
 **Qué es:** Garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella.
 
-**Por qué aquí:** Los favoritos son estado compartido entre la vista `/blog` y el preview en `/` (Home). Si existieran dos instancias del store, podrían tener datos distintos y generar inconsistencias visuales. La implementación como **IIFE** (Immediately Invoked Function Expression) garantiza que solo exista una instancia con acceso exclusivo al `localStorage`, sin importar cuántos módulos importen `FavoritesStore`. Es el único punto de escritura y lectura para ese dato.
+**Por qué aquí:** Los favoritos son estado compartido entre la vista `/blog` y el preview en `/` (Home). La implementación como **IIFE** garantiza que solo exista una instancia con acceso exclusivo al `localStorage`, sin importar cuántos módulos importen `FavoritesStore`.
 
 ---
 
 ### Patrón 4 — 📐 Template Method
-**Archivos:** `index.html` → `<template id="tpl-blog-card">`, `components/blog-card.js`
+**Archivos:** `src/partials/blog-card-template.hbs` → `components/blog/blog.js`
 
-**Qué es:** Define el esqueleto de un algoritmo en una clase base, diferiendo algunos pasos a subclases. Las subclases redefinen ciertos pasos sin cambiar la estructura general.
+**Qué es:** Define el esqueleto de un algoritmo en una clase base, diferiendo algunos pasos a subclases.
 
-**Por qué aquí:** El `<template>` HTML es la implementación nativa del patrón. Define el "algoritmo" — la estructura visual de una card — una sola vez. Cada instancia de `blog-card` ejecuta los pasos concretos (rellenar fecha, tag, título, cuerpo). Si el layout de todas las cards necesita cambiar (agregar un campo de tiempo de lectura, por ejemplo), se edita **un único `<template>`** y todas las instancias lo reflejan automáticamente, sin tocar cada card individualmente.
+**Por qué aquí:** El `<template>` HTML define la estructura visual de una card una sola vez como partial de Handlebars. Cada instancia de `blog-card` ejecuta los pasos concretos (rellenar fecha, tag, título, cuerpo). Si el layout necesita cambiar, se edita **un único partial** y todas las instancias lo reflejan automáticamente.
 
 ---
-## 5. Observer APIs
- 
+
+## 7. Observer APIs
+
 ### IntersectionObserver
 **Archivo:** `observers.js` → `initIntersectionObserver()`, usado en `pages/projects.js`, `pages/blog.js`, `pages/experience.js`, `pages/home.js`
- 
-**Qué problema resuelve:** Los elementos de cada vista aparecen de golpe al montar la página. Queremos que las project-cards, exp-cards, skill-cards y secciones del blog "entren" con una transición suave al hacer scroll, sin penalizar el rendimiento.
- 
-**Implementación:** Cada elemento con `data-observe` empieza invisible (`opacity: 0, translateY(28px)`). El observer detecta cuando supera el 15% de visibilidad y añade la clase `.is-visible`, que activa la transición CSS. Una vez visible, el elemento se desuscribe para no consumir recursos.
- 
-**Por qué esta API y no un scroll listener:**
-Un `scroll` listener se dispara en cada pixel de desplazamiento, en el hilo principal, pudiendo bloquear la UI. `IntersectionObserver` corre fuera del hilo principal y solo notifica cuando el elemento cruza el umbral definido. Es exactamente la herramienta diseñada para este caso de uso — no hay alternativa más eficiente en el navegador.
+
+Detecta cuando los elementos con `data-observe` superan el 15% de visibilidad y añade `.is-visible` para activar la transición CSS. Más eficiente que un `scroll` listener porque corre fuera del hilo principal.
 
 ### MutationObserver
 **Archivo:** `observers.js` → `initMutationObserver()`, usado en `pages/blog.js` y `pages/home.js`
- 
-**Qué problema resuelve:** Las `blog-card` se insertan dinámicamente en el DOM cada vez que el usuario cambia de filtro o carga la página. Necesitamos aplicar animación de entrada a cada card nueva sin que `blog.js` tenga que encargarse de eso, y sin usar `setTimeout` ni polling para "esperar" a que el DOM cambie.
- 
-**Implementación:** Se observa el `div.blog__grid`. Cuando `renderCards()` inserta nuevos nodos, el observer detecta el cambio en `childList`, lee el índice de cada nodo añadido y le asigna un `animationDelay` escalonado + la clase `.card-enter`, creando un efecto stagger automático. El observer se desconecta antes de limpiar el grid y se reconecta antes de insertar, evitando animaciones espurias en el `innerHTML = ''`.
- 
-**Por qué esta API y no un callback manual en renderCards:**
-Si `renderCards` llamara directamente a la función de animación, `blog.js` estaría acoplado a la lógica de presentación. Con `MutationObserver` el sistema de animación es completamente independiente — reacciona a cambios en el DOM sin importar quién los causa. Si mañana otra parte del código inserta cards, se animarán automáticamente.
+
+Observa el `div.blog__grid` y aplica animación escalonada a cada card insertada dinámicamente, sin acoplar `blog.js` a la lógica de presentación.
 
 ### ResizeObserver
 **Archivo:** `observers.js` → `initResizeObserver()`, usado en `pages/experience.js`
- 
-**Qué problema resuelve:** El grid de habilidades técnicas (`.skills-grid`) necesita cambiar de 3 a 2 a 1 columna según el espacio disponible. Las media queries CSS solo reaccionan al ancho del **viewport**, no al ancho del **contenedor** — si el panel lateral de VS Code está abierto, el contenedor puede ser angosto aunque el viewport sea amplio. Container queries (`@container`) todavía no tienen soporte universal completo.
- 
-**Implementación:** Se observa `.skills-grid` con `ResizeObserver`. Cada vez que su ancho cambia (por cualquier causa: resize de ventana, panel lateral, zoom), se ajustan las columnas CSS directamente en el elemento según breakpoints del contenedor: `< 340px` → 1 col, `< 560px` → 2 col, `≥ 560px` → 3 col.
- 
-**Por qué esta API y no media queries:**
-Una media query no puede conocer el ancho de un contenedor específico, solo el del viewport. `ResizeObserver` observa exactamente el elemento que nos interesa y responde a cualquier causa de cambio de tamaño, no solo al resize de ventana. Es la única API del navegador diseñada para este propósito.
+
+Ajusta las columnas del grid de habilidades según el ancho del contenedor (no del viewport), resolviendo el problema que las media queries CSS no pueden solucionar.
 
 ---
 
-## 6. Cómo se hizo
+## 8. Cómo se hizo
 
 - **Diseño UX/UI:** Prototipado inicial y diseño de alta fidelidad realizado en Figma.
 - **Desarrollo Frontend:** Implementación de componentes responsivos con estándares modernos de desarrollo web, metodología BEM y arquitectura de módulos ES6.
-- **Gestión de Versiones:** El proyecto sigue un flujo de trabajo de Git riguroso, con rama dedicada a la migración SPA.
+- **Bundler:** Vite con PostCSS para procesamiento de CSS y Handlebars para partials reutilizables.
+- **Gestión de Versiones:** El proyecto sigue un flujo de trabajo de Git riguroso con ramas por sprint (`sprint1/bem`, `sprint/vite-handlebars`).
 
 ---
 
-## 7. Enlace al Diseño (Figma)
+## 9. Enlace al Diseño (Figma)
 
-Se puede visualizar el prototipo interactivo y la guía de estilos:
 👉 https://www.figma.com/design/iS2Np4GSlEEDQf7hPDzBt1/Figma?node-id=0-1&t=3AI7tXRMcbBbMtLC-1
 
 ---
 
-## 8. IAs utilizadas durante el desarrollo
+## 10. IAs utilizadas durante el desarrollo
 
 👉 https://chatgpt.com/share/698eaa44-cc28-8010-8e5d-4e80911bae12
 
