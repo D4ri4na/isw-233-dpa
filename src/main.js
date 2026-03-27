@@ -7,9 +7,9 @@ import './components/about/about.css';
 import './components/blog/blog.css';
 import './components/projects/projects.css';
 import './components/experience/experience.css';
-import '../components/contact/contact.css';
-import '../components/footer/footer.css';
-import '../components/dark-mode/dark-mode.css';
+import './components/contact/contact.css';
+import './components/footer/footer.css';
+import './components/dark-mode/dark-mode.css';
 
 import './components/header/header.js';
 import './components/footer/footer.js';

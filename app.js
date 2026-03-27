@@ -1,5 +1,5 @@
 import { loadStyles }  from './styles.js';
-import './components/index.js';
+import './src/components/index.js';
 import {
     homePage,
     aboutPage,
