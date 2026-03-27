@@ -6,11 +6,11 @@ module.exports = (env, argv) => {
   return {
     mode: isProduction ? 'production' : 'development',
 
-    entry: './app.js',
+    entry: './src/main.js',
 
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: isProduction ? 'main.[contenthash].js' : 'main.js',
+      filename: 'main.[contenthash].js',
       clean: true,
     },
 
