@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -17,10 +18,38 @@ module.exports = (env, argv) => {
     devtool: isProduction ? false : 'source-map',
 
     devServer: {
-      static: path.resolve(__dirname, './'),
+      static: path.resolve(__dirname, 'dist'),
       port: 8080,
       hot: true,
       open: true,
     },
+
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: [
+            'style-loader',
+            'css-loader',
+            'postcss-loader',
+          ],
+        },
+      ],
+    },
+
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+        minify: isProduction ? {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          minifyJS: true,
+          minifyCSS: true,
+        } : false,
+      }),
+    ],
   };
 };
