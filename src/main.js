@@ -1,4 +1,4 @@
-import '../vendor/normalize.css';
+import './vendor/normalize.css';
 
 import './components/base/base.css';
 import './components/header/header.css';
@@ -15,4 +15,4 @@ import './components/header/header.js';
 import './components/footer/footer.js';
 import './components/blog/blog.js';
 
-import '../app.js';
+import './app.js';

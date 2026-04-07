@@ -1,4 +1,4 @@
-import { initIntersectionObserver } from '../observers.js';
+import { initIntersectionObserver } from '../../observers.js';
 
 export function projectsPage() {
     const section = document.createElement('section');

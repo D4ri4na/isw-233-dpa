@@ -1,5 +1,5 @@
 import { loadStyles }  from './styles.js';
-import './src/components/index.js';
+import './components/index.js';
 import {
     homePage,
     aboutPage,
@@ -11,7 +11,6 @@ import {
 
 loadStyles();
 
-// Strategy
 const routes = {
     '/'           : homePage,
     '/about'      : aboutPage,
@@ -58,4 +57,4 @@ document.addEventListener('click', (e) => {
 });
 
 restoreRoute();
-resolve();    
+resolve();

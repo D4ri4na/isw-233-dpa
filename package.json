@@ -1,6 +1,6 @@
 {
   "name": "isw-233-dpa",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,19 +10,19 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "autoprefixer": "^10.4.27",
+    "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.4",
+    "css-minimizer-webpack-plugin": "^8.0.0",
     "eslint": "^10.1.0",
-    "handlebars": "^4.7.8",
     "html-webpack-plugin": "^5.6.6",
+    "mini-css-extract-plugin": "^2.9.0",
     "postcss": "^8.5.8",
     "postcss-import": "^16.1.1",
     "postcss-loader": "^8.2.1",
     "postcss-nested": "^7.0.2",
     "style-loader": "^4.0.0",
-    "stylelint": "^16.26.1",
-    "stylelint-config-standard": "^40.0.0",
-    "stylelint-selector-bem-pattern": "^4.0.1",
-    "vite": "^8.0.1",
-    "vite-plugin-handlebars": "^2.0.0"
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   }
 }
