@@ -11,8 +11,8 @@ import './components/contact/contact.css';
 import './components/footer/footer.css';
 import './components/dark-mode/dark-mode.css';
 
-import './components/header/header.js';
-import './components/footer/footer.js';
-import './components/blog/blog.js';
+import './components/header/header.ts';
+import './components/footer/footer.ts';
+import './components/blog/blog.ts';
 
-import './app.js';
+import './app.ts';
