@@ -1,0 +1,11 @@
+<section class="blog page-enter">
+    <div class="container">
+        <h2 class="blog__title">Blog</h2>
+        <span class="blog__title-line"></span>
+        <div class="blog__grid">
+            {{#each articles}}
+                {{> ArticleCard this}}
+            {{/each}}
+        </div>
+    </div>
+</section>

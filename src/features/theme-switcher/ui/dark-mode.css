@@ -1,0 +1,144 @@
+.dark-mode-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgb(0 0 0 / 25%);
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-btn:hover {
+    background-color: #e67e22;
+    transform: scale(1.1);
+}
+
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .header {
+    background-color: #0d0d1a;
+}
+
+body.dark-mode .header--scrolled {
+    background-color: #0f3460;
+}
+
+body.dark-mode .nav__link {
+    background-color: #e0e0e0;
+    color: #1a1a2e;
+}
+
+body.dark-mode .nav__link:hover {
+    background-color: #f39c12;
+    color: white;
+}
+
+body.dark-mode .hero {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .hero__description {
+    color: #b0b0b0;
+}
+
+body.dark-mode .about {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .about__name {
+    color: #e0e0e0;
+}
+
+body.dark-mode .about__card {
+    background-color: #16213e;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 30%);
+}
+
+body.dark-mode .about__content h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .about__content p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .about__section h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .education-card {
+    background-color: #0f3460;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 30%);
+    color: #e0e0e0;
+}
+
+body.dark-mode .education-card h5 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .education-card p {
+    color: #bbb;
+}
+
+body.dark-mode .hobbies-grid span {
+    background-color: #16213e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 30%);
+}
+
+body.dark-mode .blog__title,
+body.dark-mode .section-header h2 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .blog__subtitle {
+    color: #999;
+}
+
+body.dark-mode .blog {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .blog__card {
+    background-color: #16213e;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 30%);
+    color: #e0e0e0;
+}
+
+body.dark-mode .blog__card h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .blog__preview {
+    color: #aaa;
+}
+
+body.dark-mode .blog__meta {
+    color: #666;
+}
+
+body.dark-mode .blog__more {
+    color: #bbb;
+}
+
+body.dark-mode .contact {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode .contact__info h3,
+body.dark-mode .contact__info h4 {
+    color: #e0e0e0;
+}

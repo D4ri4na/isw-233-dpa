@@ -1,0 +1,15 @@
+{{!-- src/entities/article/ui/ArticleCard.hbs --}}
+<article class="blog__card {{#if favorited}}blog__card--favorited{{/if}}" data-id="{{id}}">
+    <div class="blog__header">
+        <span class="blog__date">{{date}}</span>
+        <span class="blog__tag">{{tag}}</span>
+    </div>
+    <h3 class="blog__title">{{title}}</h3>
+    <p class="blog__preview">{{preview}}</p>
+    <div class="blog__footer">
+        <button class="blog__read-more" data-action="expand">Leer más →</button>
+        <button class="blog__fav-btn" data-id="{{id}}">
+            {{#if favorited}}❤️{{else}}🖤{{/if}}
+        </button>
+    </div>
+</article>

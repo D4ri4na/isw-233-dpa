@@ -1,18 +1,16 @@
-import './vendor/normalize.css';
+import './shared/ui/base.css';
+import './widgets/header/ui/header.css';
+import './pages/home/ui/hero.css';
+import './pages/about/ui/about.css';
+import './pages/blog/ui/blog.css';
+import './pages/projects/ui/projects.css';
+import './pages/experience/ui/experience.css';
+import './pages/contact/ui/contact.css';
+import './widgets/footer/ui/footer.css';
+import './features/theme-switcher/ui/dark-mode.css';
 
-import './components/base/base.css';
-import './components/header/header.css';
-import './components/hero/hero.css';
-import './components/about/about.css';
-import './components/blog/blog.css';
-import './components/projects/projects.css';
-import './components/experience/experience.css';
-import './components/contact/contact.css';
-import './components/footer/footer.css';
-import './components/dark-mode/dark-mode.css';
+import './widgets/header/ui/index.ts';
+import './widgets/footer/ui/index.ts';
+import './entities/article/ui/blog-card.ts';
 
-import './components/header/header.ts';
-import './components/footer/footer.ts';
-import './components/blog/blog.ts';
-
-import './app.ts';
+import './app/app.ts';

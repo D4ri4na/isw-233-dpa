@@ -1,6 +1,6 @@
-export { homePage }       from './home.ts';
-export { aboutPage }      from './about.ts';
-export { projectsPage }   from './projects.ts';
-export { blogPage }       from './blog.ts';
-export { experiencePage } from './experience.ts';
-export { contactPage }    from './contact.ts';
+export { homePage }       from './home/ui/index';
+export { aboutPage }      from './about/ui/index';
+export { projectsPage }   from './projects/ui/index';
+export { blogPage }       from './blog/ui/index';
+export { experiencePage } from './experience/ui/index';
+export { contactPage }    from './contact/ui/index';
