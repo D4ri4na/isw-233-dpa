@@ -162,3 +162,5 @@ Ajusta las columnas del grid de habilidades según el ancho del contenedor (no d
 👉 https://claude.ai/share/c64028c2-075a-4b0e-
 
 👉 https://claude.ai/share/a474f14b-1ffc-485e-a0e5-0dfbe76b01f2
+
+👉 https://gemini.google.com/share/875dfcb3ee01

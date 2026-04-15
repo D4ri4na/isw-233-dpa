@@ -35,7 +35,6 @@ export const BLOG_ARTICLES: Article[] = [
   },
 ];
 
-// Singleton
 export const FavoritesStore: FavoritesStoreType = (() => {
   const KEY = 'blog-favs';
 
